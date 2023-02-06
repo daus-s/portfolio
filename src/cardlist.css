@@ -1,0 +1,11 @@
+.CardList {
+  position: absolute;
+  top: 110px;
+  width: 70%;
+}
+
+@media only screen and (max-width: 600px) {
+  .CardList {
+    top: 85px;
+  }
+}

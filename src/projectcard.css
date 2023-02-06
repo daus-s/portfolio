@@ -1,0 +1,102 @@
+.Container a {
+  align-content: center;
+  color: lime;
+  text-decoration: none;
+}
+
+.Container a:active {
+  color: lime;
+  text-decoration: none;
+}
+
+.Container a:focus {
+  color: lime;
+  outline: none;
+  text-decoration: none;
+}
+
+.Container a:hover {
+  color: lime;
+  text-decoration: none;
+}
+
+.ProjectCard {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  border: linen;
+  border-style: double;
+  border-width: 7px;
+  border-radius: 20px;
+  word-wrap: break-word;
+  display: flex;
+  align-self: center;
+  flex-wrap: wrap;
+}
+
+.ProjectCard:hover {
+  box-shadow: 0px 0px 25px linen;
+}
+
+.ProjectCard:focus {
+  box-shadow: 0px 0px 25px linen;
+}
+
+.ProjectCard h1,
+.ProjectCard h2 {
+  display: inline-block;
+}
+
+.ProjectCard p {
+  width: 100%;
+  flex: 1;
+  align-self: flex-start;
+}
+
+.ProjectCard img {
+  flex: 1;
+  align-self: flex-start;
+  max-width: 25%;
+}
+
+.title {
+  text-align: left;
+  font-size: 32px;
+  font-weight: bold;
+  float: left;
+  width: 100%;
+}
+
+.date {
+  font-size: 24px;
+  font-weight: bold;
+  float: right;
+  width: 100%;
+  text-align: right;
+}
+
+.img {
+  float: left;
+  width: 20%;
+  padding-bottom: 5px;
+}
+
+.description {
+  float: right;
+  width: 75%;
+  text-align: left;
+  padding-bottom: 5px;
+  font-weight: 1000;
+}
+
+.top {
+  display: flex;
+  width: 100%;
+  left: 0px;
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+
+.bot {
+  display: flex;
+}

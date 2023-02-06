@@ -1,0 +1,16 @@
+.LinkList {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 50px;
+  z-index: 2;
+}
+
+.LinkList a {
+  display: inline-block;
+}
+
+.LinkList img {
+  height: 30px;
+}
