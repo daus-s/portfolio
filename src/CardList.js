@@ -15,7 +15,7 @@ export default function CardList() {
     <div className="CardList">
       <ProjectCard
         title="Biography"
-        description="My name is Davis Carmichael, although I go by Daus. (exclusively). I graduated from Chapman University in December 2022 with 2 degrees; one a Bachelor's of Science Degree in Physics, and the other a Bachelor's of Science in Comouter Science. I competed in track and field and cross country in college. I am from Issaquah in Washington State. This meant the outdoors became a very import part of my life. I loved running on the trails in the hills as well as snowboarding in the mountains 45 minutes from home. I grew up very interested in science and my curiosuty has yet to leave me. I am always looking to learn and figure out more and more. As I explained, more and more problems, I will continue to add projects I complete here."
+        description="My name is Davis Carmichael, although I go by Daus. (exclusively). I graduated from Chapman University in December 2022 with 2 degrees; one a Bachelor's of Science Degree in Physics, and the other a Bachelor's of Science in Computer Science. I competed in track and field and cross country in college. I am from Issaquah in Washington State. This meant the outdoors became a very important part of my life. I loved running on the trails in the hills as well as snowboarding in the mountains 45 minutes from home. I grew up very interested in science and my curiosity has yet to leave me. I am always looking to learn and figure out more and more. As I explained, with more and more problems, I will continue to add projects I complete here."
         date="February 2000"
         image="https://github.com/daus-s/portfolio/blob/main/Selfie.jpg?raw=true"
         altDescription="Hey, I'm Daus, welcome to my website! I will continue to add new projects as I work on them!"
@@ -23,29 +23,29 @@ export default function CardList() {
       <Spacer height="20px" />
       <ProjectCard
         title="Desmos Algebra"
-        description="The inspiration for this project came from a place of boredom. While working on intro-level physics problems for my job as an SI, I soon realized that I was often solving the same equation over and over. I would simply be solving for different variables. So, I used desmos to write the equation out and get the values that the students were given.  I would get the final result of the question very easily but I still had to rewrite the equation. If I were able to write the equations necessary for one problem could I plug in the values and find all of the answers from the problem."
+        description="The inspiration for this project came from a place of boredom. While working on intro-level physics problems for my job as an SI, I soon realized that I was often solving the same equation over and over. I would simply be solving for different variables. So, I used desmos to write the equation out and get the values that the students were given.  I would get the final result of the question very easily but I still had to rewrite the equation. If I were able to write the equations necessary for one problem could I plug in the values and find all of the answers for the problems?"
         link="https://github.com/daus-s/desmos-algebra"
         date="December 2022"
         image="https://github.com/daus-s/portfolio/blob/main/DesmosImage.PNG?raw=true"
-        altDescription="This is a project that created a mathematical language. The code uses Haskell, BNFC, Java and the main computation is done using rust."
+        altDescription="This is a project that created a mathematical language. The code uses Haskell, BNFC, Java, and Rust for the main computational work."
       />
       <Spacer height="20px" />
       <ProjectCard
         title="Porter: Figma App"
-        description="During the summer of 2022 I was taking one of my final classes to complete my computer science degree. The class; Human-Computer Interaction. Our final project was to create a protoype of an app that was not limited by the technology that would solved our sections problem. Our problem was loneliness. My immediate thought was, well teleportation could solve that. So I created an app mocking an interface with a teleporter. We did crowd research in our class and user feedback using Maze."
+        description="During the summer of 2022, I was taking one of my final classes to complete my computer science degree. The class; Human-Computer Interaction. Our final project was to create a prototype of an app that was not limited by the technology that would solve our section's problem. Our problem was loneliness. My immediate thought was, well teleportation could solve that. So I created an app mocking an interface with a teleporter. We did crowd research in our class and user feedback using Maze."
         link="https://www.figma.com/proto/35WCXSng2SdXXfTNkjWLef/porter?node-id=1%3A2&starting-point-node-id=1%3A2"
         date="Summer 2022"
         image="https://github.com/daus-s/portfolio/blob/main/PorterFigma.PNG?raw=true"
-        altDescription="This project was for HCI a class I took at Chapman. The focus was to solve loneliness. We were not bound by any technological restraints, we were given the ability to dream and explain why our prototype would solve this problem. "
+        altDescription="This project was for HCI a class I took at Chapman. The focus was to solve loneliness. We were not bound by any technological restraints, we were given the ability to dream and explain why our prototype would solve this problem."
       />
       <Spacer height="20px" />
       <ProjectCard
         title="Optics"
-        description="This is a book containing 6 topics in optics. It describes the fundamental math of each topic as well as the lab practice we used. The book includes diagrams, mathematics, pictures and written descriptions. The 6 topics are: reflection and refraction, telescopes, microscopes, power and polarization of light, lasers and diffraction. "
+        description="The wordle app I created is a Command line-based app that takes uses User input to solve the wordle problem for the day. I have not yet lost while using the code (I also have never lost without using the code). The code uses a file of valid guesses as well as valid words to create the possible words that could be used in Wordle. Then the user inputs into the command line interface the word chosen and the results (the black, yellow, and green values). These correspond to where the letters in the guessed word go. If you are not familiar with the game, if the letter returns black then that letter does not exist in the word, if it is yellow it exists in that word but not in that index, if the letter is green that letter exists in that spot."
         link="/OpticsBook.pdf"
         date="May 2022"
         image="https://raw.githubusercontent.com/daus-s/portfolio/7c08561234e92a580d7a1fea34a8fb3ea0615e23/OpticsImage.jpg"
-        altDescription="In Optics Lab we had an assignment to create chapters throughout the semester. We would then compile them together to create our own books. Each chapter covers a physical phenomenon and a laboratory experiment to test it."
+        altDescription="In Optics Lab we had an assignment in which we were to create chapters throughout the semester. We would then compile them together to create our books. Each chapter covers a physical phenomenon and a laboratory experiment to test it."
       />
       <Spacer height="20px" />
       <ProjectCard
@@ -59,11 +59,11 @@ export default function CardList() {
       <Spacer height="20px" />
       <ProjectCard
         title="Physics-Diff Eq"
-        description="This is a python based lab in which a differential equation was given and the purpose was to explore as much as possible about the equation. It is a jupyter-noteboook report. The project was to take a set of equations given to us and plot them with varying paramters. It was very interesting to see how the intial conditions could have such an effect on the behaivior. "
+        description="This is a python based lab in which a differential equation was given and the purpose was to explore as much as possible about the equation. It is a jupyter-noteboook report. The project was to take a set of equations given to us and plot them with varying parameters. It was very interesting to see how the initial conditions could have such an effect on the behavior."
         link="/Final.html"
         date="Fall 2021"
         image="https://github.com/daus-s/portfolio/blob/main/FinalImage.PNG?raw=true"
-        altDescription="One of my first projects I've been proud of. From my sophomore year of college we were given a set of mystery ODEs (ordinary differential equations) and our task was to look at their behaivior with different initial conditions."
+        altDescription="One of the first projects I've been proud of. In my Junior year of college we were given a set of mystery ODEs (ordinary differential equations) and our task was to look at their behavior with different initial conditions."
       />
       <Spacer height="20px" />
     </div>
