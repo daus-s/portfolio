@@ -1,0 +1,20 @@
+.TTTBoard {
+  width: 40%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.GameParent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.SwitchContainer {
+  display: flex;
+  justify-content: space-between;
+}
