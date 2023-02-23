@@ -327,12 +327,18 @@ export default function Board() {
     return true;
   }
   function resetBoard() {
-    setSquares(Array(9).fill(null));
+    let newSquares = Array(9).fill(null);
+    setSquares(newSquares);
     setTurn("X");
     if (firstPlay && !twoPersonMode)
     {
-      setSquares((makePlay(newSquares, firstPlay, newTurn)));
-      if (results(full, winner, firstPlay, twoPersonMode)) {
+      setSquares((makePlay(newSquares, firstPlay, "X")));
+      if (results(
+            isGridFull(squares),
+            checkWinConditions(squares), 
+            firstPlay, 
+            twoPersonMode)) 
+        {
         return;
       }
       setTurn(newTurn === "X" ? "O" : "X");
