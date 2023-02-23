@@ -329,6 +329,15 @@ export default function Board() {
   function resetBoard() {
     setSquares(Array(9).fill(null));
     setTurn("X");
+    if (firstPlay && !twoPersonMode)
+    {
+      setSquares((makePlay(newSquares, firstPlay, newTurn)));
+      if (results(full, winner, firstPlay, twoPersonMode)) {
+        return;
+      }
+      setTurn(newTurn === "X" ? "O" : "X");
+      return;
+    }
   }
 
   const renderSquare = (i) => {
