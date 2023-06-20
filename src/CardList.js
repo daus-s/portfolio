@@ -61,7 +61,7 @@ export default function CardList() {
       <ProjectCard
         title="Physics-Diff Eq"
         description="This is a python based lab in which a differential equation was given and the purpose was to explore as much as possible about the equation. It is a jupyter-noteboook report. The project was to take a set of equations given to us and plot them with varying parameters. It was very interesting to see how the initial conditions could have such an effect on the behavior."
-        link="/Final.ipynb"
+        link="/Final.html"
         date="Fall 2021"
         image="https://github.com/daus-s/portfolio/blob/main/FinalImage.PNG?raw=true"
         altDescription="One of the first projects I've been proud of. In my Junior year of college we were given a set of mystery ODEs (ordinary differential equations) and our task was to look at their behavior with different initial conditions."
