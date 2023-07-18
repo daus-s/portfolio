@@ -61,7 +61,7 @@ export default function CardList() {
         description="In my technical communications course our group was assigned an issue prevalent to college students (our audience). Our group researched internet addiction and misuse and determined it to be a worthwhile topic to inform our class on. This class is a CS/CE and SE major requirement. CS majors had naturally higher levels of dependence on the internet and so informing them on healthy internet use was more important than it may be for other groups on campus. This presentation has a test to determine the 'level' of internet addiction one is experiencing. This test is not necesarily indicative of your actual level of addiction but it does give a baseline. Feel free to take the test, the results will be uploaded to a dataset and will be completely anonymous. The team that worked on this project included me (Daus), Benjamin Kahn, Keoni Lanoza, Moises Lopez. "
         link="/ImprovingInternetUseTCM.pdf"
         date="April 2022"
-        image="https://raw.githubusercontent.com/daus-s/portfolio/7c08561234e92a580d7a1fea34a8fb3ea0615e23/OpticsImage.jpg"
+        image="https://raw.githubusercontent.com/daus-s/portfolio/main/TCMMidtermQR.PNG"
         altDescription="This is the technical communications midterm. It is a presentation on improving internet use. There is an anonymous self-reporting quiz to determine your level of internet addiction. This test is not necesarily indicative of your actual level of addiction but it does give a baseline. Team: Benjamin Kahn, Daus Carmichael, Keoni Lanoza, Moises Lopez."
       />
       <Spacer height="20px" />
