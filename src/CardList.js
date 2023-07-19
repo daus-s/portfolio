@@ -21,8 +21,6 @@ export default function CardList() {
         altDescription="Hey, I'm Daus, welcome to my website! I will continue to add new projects as I work on them!"
       />
       <Spacer height="20px" />
-      
-      <Spacer height="20px" />
       <ProjectCard
         title="Desmos Algebra"
         description="The inspiration for this project came from a place of boredom. While working on intro-level physics problems for my job as an SI, I soon realized that I was often solving the same equation over and over. I would simply be solving for different variables. So, I used desmos to write the equation out and get the values that the students were given.  I would get the final result of the question very easily but I still had to rewrite the equation. If I were able to write the equations necessary for one problem could I plug in the values and find all of the answers for the problems?"
