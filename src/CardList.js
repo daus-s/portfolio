@@ -21,14 +21,7 @@ export default function CardList() {
         altDescription="Hey, I'm Daus, welcome to my website! I will continue to add new projects as I work on them!"
       />
       <Spacer height="20px" />
-      <ProjectCard
-        title="Tic Tac Toe"
-        description="I created a Tic Tac Toe game using react to build the project. Without errors, the computer will not lose. Additionally by toggling the computer first play switch you can watch the algorithm play itself. It will never lose to itself. The game as stated before has 1-person and 2-person functionality but this will reset the board. "
-        link="/tictactoe"
-        date="February 2023"
-        image="https://github.com/daus-s/portfolio/blob/main/tictactoe.PNG?raw=true"
-        altDescription="I built a tic-tac-toe game this blob serves as a link to the game. Enjoy!"
-      />
+      
       <Spacer height="20px" />
       <ProjectCard
         title="Desmos Algebra"
