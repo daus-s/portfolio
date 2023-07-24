@@ -17,7 +17,7 @@ export default function CardList() {
         title="Biography"
         description="My name is Davis Carmichael, although I go by Daus. (exclusively). I graduated from Chapman University in December 2022 with 2 degrees; one a Bachelor's of Science Degree in Physics, and the other a Bachelor's of Science in Computer Science. I competed in track and field and cross country in college. I am from Issaquah in Washington State. This meant the outdoors became a very important part of my life. I loved running on the trails in the hills as well as snowboarding in the mountains 45 minutes from home. I grew up very interested in science and my curiosity has yet to leave me. I am always looking to learn and figure out more and more. As I explained, with more and more problems, I will continue to add projects I complete here."
         date="February 2000"
-        image="https://github.com/daus-s/portfolio/blob/main/Selfie.jpg?raw=true"
+        image="https://github.com/daus-s/portfolio/blob/main/graduation.jpg?raw=true"
         altDescription="Hey, I'm Daus, welcome to my website! I will continue to add new projects as I work on them!"
       />
       <Spacer height="20px" />
