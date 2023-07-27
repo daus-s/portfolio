@@ -51,7 +51,7 @@ export default function ResultModal(props) {
         <button className="close" id="rmcb" onClick={handleClose}>
           <img src={originalSrc} alt="Close." className="closeButton" />
         </button>
-        <h2>{message(results)}</h2>
+        <div className="modalTitle">{message(results)}</div>
       </div>
     </Popup>
   );

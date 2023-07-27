@@ -28,7 +28,7 @@ export default function ResultModal(props) {
         <button className="close" id="imcb" onClick={props.onClose}>
           <img src={originalSrc} alt="Close." className="closeButton" />
         </button>
-        <h2>Welcome to tic-tac-toe</h2>
+        <div className="modalTitle">Welcome to tic-tac-toe</div>
         <ul>
           <li>
             I created this game to show off the "unwinnability and
