@@ -79,7 +79,11 @@ export default function Square(props) {
     props.onClick();
   };
 
-  const divStyle = borderStyling(props.number);
+  const divStyle = {
+    ...borderStyling(props.number),
+    width: props.square.width,
+    height: props.square.height
+  };
 
   return (
     <div className="TTTSquare" style={divStyle} onClick={handleClick}>

@@ -4,32 +4,83 @@ html {
   color: lime;
   padding: 0px;
   margin-top: 0px !important;
+  height: 100%;
 }
 
 body {
   margin-top: 0px !important;
+  margin-right: 0px;
+  margin-left: 0px;
+  height: 100%;
 }
 
 .App {
+  height: 100vh;
+  width: 100%;
   border: 0px;
   margin: 0px;
+  top: 0px;
   padding: 0px;
   text-align: center;
   background-color: black;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: absolute;
 }
 
-.Home {
-  border: 0px;
-  margin: 0px;
-  padding: 0px;
-  text-align: center;
-  background-color: black;
+.homebutton {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: 22px;
+  left: 22px;
+}
+
+.homebutton .icon {
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  left: 62px;
+  right: 62px;
+}
+
+.resetbutton {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: 22px;
+  right: 22px;
+}
+
+.resetbutton .icon {
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  cursor: pointer;
+  /* Add any other custom styles as needed */
+}
+
+.title {
+  position: absolute;
+  width: calc(100% - 124px);
+  top: 0px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
+}
+
+.infobutton .icon {
+  width: 11px;
+  height: 11px;
+  top: 36px;
+  right: calc(50% - 124px);
 }
