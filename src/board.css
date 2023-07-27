@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   touch-action: none;
-  top: 70px;
+
 }
 
 .GameParent {
