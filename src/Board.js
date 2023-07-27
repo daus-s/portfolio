@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./tttstyles.css";
 import "./board.css";
 import "./switch.css";
 import Square from "./Square";

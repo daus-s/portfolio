@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./styles.css";
+import "./tttstyles.css";
 
 export default function InfoButton(props) {
   const originalSrc =

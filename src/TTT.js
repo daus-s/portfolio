@@ -1,6 +1,6 @@
 import Board from "./Board";
 import TTTHeader from "./TTTHeader";
-import "./styles.css";
+import "./tttstyles.css";
 
 export default function TTT() {
   return (

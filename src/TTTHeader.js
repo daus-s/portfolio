@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./tttstyles.css";
 import { useMediaQuery } from "@material-ui/core";
 import InfoButton from "./InfoButton";
 

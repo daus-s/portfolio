@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./tttstyles.css";
 import "./square.css";
 
 function borderStyling(n) {
