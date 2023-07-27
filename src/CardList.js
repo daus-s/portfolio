@@ -22,6 +22,15 @@ export default function CardList() {
       />
       <Spacer height="20px" />
       <ProjectCard
+        title="Tic Tac Toe"
+        description="I created a Tic Tac Toe game on stream. I used react to build the project. Without errors, the computer will not lose. Additionally by toggling the computer first play switch you can watch the algorithm play itself. It will never lose to itself. The game as stated before has 1-person and 2-person functionality. "
+        link="/tictactoe"
+        date="July 2023"
+        image="https://github.com/daus-s/portfolio/blob/main/tictactoe.PNG?raw=true"
+        altDescription="I built a tic-tac-toe game this blob serves as a link to the game. Enjoy!"
+      />
+      <Spacer height="20px" />
+      <ProjectCard
         title="Desmos Algebra"
         description="The inspiration for this project came from a place of boredom. While working on intro-level physics problems for my job as an SI, I soon realized that I was often solving the same equation over and over. I would simply be solving for different variables. So, I used desmos to write the equation out and get the values that the students were given.  I would get the final result of the question very easily but I still had to rewrite the equation. If I were able to write the equations necessary for one problem could I plug in the values and find all of the answers for the problems?"
         link="https://github.com/daus-s/desmos-algebra"
