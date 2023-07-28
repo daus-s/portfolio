@@ -303,14 +303,24 @@ function makePlay(squares, firstPlay, turn) {
     }
 
     //block common line
+    let order = [4, 0, 2, 6, 8, 1, 3, 5, 7];
+
     let open = getOpening(squares, player);
     if (open) {
       let c = commonLines(lines, open[0], open[1]);
-      for (let i = 0; i < c.length; ++c) {
-        if (!squares[c[i]]) {
-          squares[c[i]] = comp;
-          print(comp + " plays " + c[i] + " via common lines");
-          return squares;
+      for (let i = 0; i < order.length; ++i) {
+        for (let a = 0; a < c.length; ++a) {
+          let foo = order[i];
+          let bar = c[a];
+          print("" + foo + "=" + bar + ": " + (foo == bar));
+          if (order[i] == c[a]) {
+            if (!squares[c[a]]) {
+              //the question is to prioritize corners or to avoid blocked lines
+              squares[c[a]] = comp;
+              print(comp + " plays " + c[a] + " via common lines");
+              return squares;
+            }
+          }
         }
       }
     }
