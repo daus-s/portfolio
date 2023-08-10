@@ -8,7 +8,7 @@ import "./projectcard.css";
 import "./spacer.css";
 
 import React from "react";
-import { useMediaQuery } from "@material-ui/core";
+import { useMediaQuery } from "@mui/material";
 import MobileProjectCard from "./MobileProjectCard";
 export default function ProjectCard(props) {
   const handleKeyPress = (e) => {

@@ -7,7 +7,7 @@ import "./linklist.css";
 import "./projectcard.css";
 import "./spacer.css";
 
-import { useMediaQuery } from "@material-ui/core";
+import { useMediaQuery } from "@mui/material";
 
 export default function LinkList() {
   const isSmallScreen = useMediaQuery("(max-width: 600px)");

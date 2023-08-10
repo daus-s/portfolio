@@ -4,7 +4,7 @@ import "./app.css";
 import "./header.css";
 
 import React from "react";
-import { useMediaQuery } from "@material-ui/core";
+import { useMediaQuery } from "@mui/material";
 
 const Header = () => {
   const isMobile = useMediaQuery("(max-width:600px)");

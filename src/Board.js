@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import FirstPlayerSwitch from "./FirstPlayerSwitch";
 import TwoPersonMode from "./TwoPersonMode";
 import ResultModal from "./ResultModal";
-import { useMediaQuery } from "@material-ui/core";
+import { useMediaQuery } from "@mui/material";
 import HomeButton from "./HomeButton";
 import ResetButton from "./ResetButton";
 import SimulateSwitch from "./SimulateSwitch";
