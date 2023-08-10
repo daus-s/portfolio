@@ -16,7 +16,7 @@ export default function ProjectCard(props) {
       window.location.href = props.link;
     }
   };
-
+  
   const isMobile = useMediaQuery("(max-width:600px)");
   return isMobile ? (
     <MobileProjectCard
