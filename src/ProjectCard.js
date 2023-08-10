@@ -26,7 +26,7 @@ export default function ProjectCard(props) {
     />
   ) : (
     <div className="Container">
-      <div tabIndex="0" className="ProjectCard" onKeyPress={handleKeyPress}>
+      <div tabIndex="0" className="ProjectCard" onKeyDown={handleKeyPress}>
         <a href={props.link}>
           <div className="top">
             <div className="title">{props.title}</div>
