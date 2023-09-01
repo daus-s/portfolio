@@ -20,6 +20,7 @@ export default function CardList() {
         image="https://github.com/daus-s/portfolio/blob/main/Selfie.jpg?raw=true"
         altDescription="Hey, I'm Daus, welcome to my website! I will continue to add new projects as I work on them!"
       />
+      
       <Spacer height="20px" />
       <ProjectCard
         title="Desmos Algebra"
@@ -41,7 +42,7 @@ export default function CardList() {
       <Spacer height="20px" />
       <ProjectCard
         title="Optics"
-        description="The wordle app I created is a Command line-based app that takes uses User input to solve the wordle problem for the day. I have not yet lost while using the code (I also have never lost without using the code). The code uses a file of valid guesses as well as valid words to create the possible words that could be used in Wordle. Then the user inputs into the command line interface the word chosen and the results (the black, yellow, and green values). These correspond to where the letters in the guessed word go. If you are not familiar with the game, if the letter returns black then that letter does not exist in the word, if it is yellow it exists in that word but not in that index, if the letter is green that letter exists in that spot."
+        description="This is a book containing 6 topics in optics. It describes the fundamental math of each topic as well as the lab practice we used. The book includes diagrams, mathematics, pictures, and written descriptions. The 6 topics are reflection and refraction, telescopes, microscopes, power and polarization of light, lasers, and diffraction. "
         link="/OpticsBook.pdf"
         date="May 2022"
         image="https://raw.githubusercontent.com/daus-s/portfolio/7c08561234e92a580d7a1fea34a8fb3ea0615e23/OpticsImage.jpg"
