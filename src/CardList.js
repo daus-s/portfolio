@@ -17,10 +17,18 @@ export default function CardList() {
         title="Biography"
         description="My name is Davis Carmichael, although I go by Daus. (exclusively). I graduated from Chapman University in December 2022 with 2 degrees; one a Bachelor's of Science Degree in Physics, and the other a Bachelor's of Science in Computer Science. I competed in track and field and cross country in college. I am from Issaquah in Washington State. This meant the outdoors became a very important part of my life. I loved running on the trails in the hills as well as snowboarding in the mountains 45 minutes from home. I grew up very interested in science and my curiosity has yet to leave me. I am always looking to learn and figure out more and more. As I explained, with more and more problems, I will continue to add projects I complete here."
         date="February 2000"
-        image="https://github.com/daus-s/portfolio/blob/main/Selfie.jpg?raw=true"
+        image="https://github.com/daus-s/portfolio/blob/main/graduation.jpg?raw=true"
         altDescription="Hey, I'm Daus, welcome to my website! I will continue to add new projects as I work on them!"
       />
-      
+      <Spacer height="20px" />
+      <ProjectCard
+        title="Tic Tac Toe"
+        description="I created a Tic Tac Toe game on stream. I used react to build the project. Without errors, the computer will not lose. Additionally by toggling the computer first play switch you can watch the algorithm play itself. It will never lose to itself. The game as stated before has 1-person and 2-person functionality. "
+        link="/tictactoe"
+        date="July 2023"
+        image="https://github.com/daus-s/portfolio/blob/main/tictactoe.PNG?raw=true"
+        altDescription="I built a tic-tac-toe game this blob serves as a link to the game. Enjoy!"
+      />
       <Spacer height="20px" />
       <ProjectCard
         title="Desmos Algebra"
@@ -47,6 +55,16 @@ export default function CardList() {
         date="May 2022"
         image="https://raw.githubusercontent.com/daus-s/portfolio/7c08561234e92a580d7a1fea34a8fb3ea0615e23/OpticsImage.jpg"
         altDescription="In Optics Lab we had an assignment in which we were to create chapters throughout the semester. We would then compile them together to create our books. Each chapter covers a physical phenomenon and a laboratory experiment to test it."
+      />
+      <Spacer height="20px" />
+
+      <ProjectCard
+        title="Internet Addiction Presentation"
+        description="In my technical communications course our group was assigned an issue prevalent to college students (our audience). Our group researched internet addiction and misuse and determined it to be a worthwhile topic to inform our class on. This class is a CS/CE and SE major requirement. CS majors had naturally higher levels of dependence on the internet and so informing them on healthy internet use was more important than it may be for other groups on campus. This presentation has a test to determine the 'level' of internet addiction one is experiencing. This test is not necesarily indicative of your actual level of addiction but it does give a baseline. Feel free to take the test, the results will be uploaded to a dataset and will be completely anonymous. The team that worked on this project included me (Daus), Benjamin Kahn, Keoni Lanoza, Moises Lopez. "
+        link="/ImprovingInternetUseTCM.pdf"
+        date="April 2022"
+        image="https://raw.githubusercontent.com/daus-s/portfolio/main/TCMMidtermQR.PNG"
+        altDescription="This is the technical communications midterm. It is a presentation on improving internet use. There is an anonymous self-reporting quiz to determine your level of internet addiction. This test is not necesarily indicative of your actual level of addiction but it does give a baseline. Team: Benjamin Kahn, Daus Carmichael, Keoni Lanoza, Moises Lopez."
       />
       <Spacer height="20px" />
       <ProjectCard

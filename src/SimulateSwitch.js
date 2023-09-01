@@ -1,4 +1,4 @@
-export default function FirstPlayerSwitch(props) {
+export default function SimulateSwitch(props) {
   const pstyle = {
     color: props.disabled ? "#eee" : ""
   };
@@ -14,9 +14,10 @@ export default function FirstPlayerSwitch(props) {
   };
 
   return (
-    <div className="FPS" style={cstyle}>
+    <div className="SSG" style={cstyle}>
       <label className="switch" style={sstyle}>
         <input
+          id={props.id}
           type="checkbox"
           disabled={props.disabled}
           onChange={props.handleSwitchToggle}
@@ -26,9 +27,7 @@ export default function FirstPlayerSwitch(props) {
           style={sstyle}
         ></span>
       </label>
-      <p style={pstyle}>
-        {props.mobile ? "Computer 1st player" : "Computer first player"}
-      </p>
+      <p style={pstyle}>Simulate game</p>
     </div>
   );
 }

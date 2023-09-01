@@ -26,6 +26,18 @@
   transition: 0.4s;
 }
 
+.mobileSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.266s;
+  transition: 0.266s;
+}
+
 .slider:before {
   position: absolute;
   content: "";
@@ -38,11 +50,29 @@
   transition: 0.4s;
 }
 
+.mobileSlider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: 0.266s;
+  transition: 0.266s;
+}
+
 input:checked + .slider {
   background-color: lime;
 }
 
 input:focus + .slider {
+  box-shadow: 0 0 1px lime;
+}
+input:checked + .mobileSlider {
+  background-color: lime;
+}
+input:focus + .mobileSlider {
   box-shadow: 0 0 1px lime;
 }
 
@@ -52,25 +82,42 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+input:checked + .mobileSlider:before {
+  -webkit-transform: translateX(18px);
+  -ms-transform: translateX(18px);
+  transform: translateX(18px);
+}
+
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
 
+.mobileSlider.round {
+  border-radius: 17px;
+}
+
 .slider.round:before {
+  border-radius: 50%;
+}
+.mobileSlider.round:before {
   border-radius: 50%;
 }
 
 .FPS {
   padding-top: 10px;
-  font-size: 28px;
-  position: absolute;
-  right: calc(30% - 176px);
+  font-size: 1em;
+  width: 33%;
 }
 
 .TPM {
   padding-top: 10px;
-  font-size: 28px;
-  left: calc(30% - 109px);
-  position: absolute;
+  font-size: 1em;
+  width: 33%;
+}
+
+.SSG {
+  padding-top: 10px;
+  font-size: 1em;
+  width: 33%;
 }

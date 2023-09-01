@@ -1,10 +1,11 @@
 import Board from "./Board";
-import "./styles.css";
+import TTTHeader from "./TTTHeader";
+import "./tttstyles.css";
 
 export default function TTT() {
   return (
     <div className="App">
-      <h1>Tic-Tac-Toe</h1>
+      <TTTHeader />
       <Board />
     </div>
   );

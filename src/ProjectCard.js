@@ -8,7 +8,7 @@ import "./projectcard.css";
 import "./spacer.css";
 
 import React from "react";
-import { useMediaQuery } from "@material-ui/core";
+import { useMediaQuery } from "@mui/material";
 import MobileProjectCard from "./MobileProjectCard";
 export default function ProjectCard(props) {
   const handleKeyPress = (e) => {
@@ -16,7 +16,7 @@ export default function ProjectCard(props) {
       window.location.href = props.link;
     }
   };
-
+  
   const isMobile = useMediaQuery("(max-width:600px)");
   return isMobile ? (
     <MobileProjectCard
@@ -26,7 +26,7 @@ export default function ProjectCard(props) {
     />
   ) : (
     <div className="Container">
-      <div tabIndex="0" className="ProjectCard" onKeyPress={handleKeyPress}>
+      <div tabIndex="0" className="ProjectCard" onKeyDown={handleKeyPress}>
         <a href={props.link}>
           <div className="top">
             <div className="title">{props.title}</div>
