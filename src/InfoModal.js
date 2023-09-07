@@ -22,9 +22,13 @@ export default function ResultModal(props) {
     }
   }, [originalSrc, hoverSrc]);
 
+  const width = {
+    width: document.getElementById("tttBoard") ? document.getElementById("tttBoard").offsetWidth : ""
+  };
+
   return (
     <Popup open={props.open} onClose={props.onClose} modal>
-      <div className="modal" id="infoModal">
+      <div className="modal" id="infoModal" style={width}>
         <button className="close" id="imcb" onClick={props.onClose}>
           <img src={originalSrc} alt="Close." className="closeButton" />
         </button>
