@@ -45,13 +45,16 @@ export default function ResultModal(props) {
     }
   }, [originalSrc, hoverSrc]);
 
+  const width = {
+    width: document.getElementById("tttBoard") ? document.getElementById("tttBoard").offsetWidth : ""
+  };
   return (
     <Popup open={gameOver} onClose={handleClose} modal>
-      <div className="modal" id="resultModal">
+      <div className="modal" id="resultModal" style={width}>
         <button className="close" id="rmcb" onClick={handleClose}>
           <img src={originalSrc} alt="Close." className="closeButton" />
         </button>
-        <div className="modalTitle">{message(results)}</div>
+        <div className="modalTitle" >{message(results)}</div>
       </div>
     </Popup>
   );
