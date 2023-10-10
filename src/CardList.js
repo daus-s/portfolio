@@ -22,6 +22,16 @@ export default function CardList() {
       />
       <Spacer height="20px" />
       <ProjectCard
+        title="Tutoring Available Now"
+        description="Tutoring sessions now available. Physics, Mathematics, Computer Science and more. Follow this link to schedule an appointment, read reviews, or find helpful resources"
+        link="/tutoring"
+        date="Since 2020"
+        image="https://github.com/daus-s/portfolio/blob/main/star.png?raw=true"
+        altDescription="This is a link to the tutoring page. Sessions now available."
+        height='64px'
+      />
+      <Spacer height="20px" />
+      <ProjectCard
         title="Tic Tac Toe"
         description="I created a Tic Tac Toe game on stream. I used react to build the project. Without errors, the computer will not lose. Additionally by toggling the computer first play switch you can watch the algorithm play itself. It will never lose to itself. The game as stated before has 1-person and 2-person functionality. "
         link="/tictactoe"
