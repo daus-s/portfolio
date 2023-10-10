@@ -7,7 +7,8 @@ const uri = `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MON
 const handler = async (event) => {
     console.log("get personal schedule handler");
     const client = new MongoClient(uri);
-    console.log("got client")
+    console.log("got client");
+    console.log(uri, jwt);
     const jwt = event.queryStringParameters.jwt;
     if (jwt==="undefined") {
         return {
