@@ -24,7 +24,9 @@
         "react-router-dom": "^6.8.1",
         "react-scripts": "^5.0.1",
         "reactjs-popup": "^2.0.5",
-        "tedious": "^16.4.0"
+        "tedious": "^16.4.0",
+        "react-modal": "^3.16.1",
+        "netlify-cli": "^16.1.0"
     },
     "devDependencies": {
         "@babel/runtime": "7.13.8",

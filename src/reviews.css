@@ -1,0 +1,60 @@
+.reviews {
+    background-color: black ;
+    color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+}
+.reviews p {
+    color: #f5f5f5;
+}
+
+.review {
+    width: 64%;
+    padding: 20px;
+    position: relative;
+    display: flex;
+}
+.review img {
+    border-radius: 50%;
+    height: 130px;
+    width: 130px;
+    overflow: hidden;
+}
+
+.picture {
+    display: flex;
+    flex-direction: column;
+}
+
+.review p {
+    text-align: left;
+}
+
+.quotation-top, .quotation-bot {
+    position: absolute;
+    font-weight: 300;
+    font-size: 52px;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.quotation-bot {
+    position: absolute;
+    bottom: -40px;
+    right: 40px;
+}
+.quotation-top {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+}
+
+.content {
+    position: relative;
+}
+
+.caption {
+    margin-top: 5px;
+}

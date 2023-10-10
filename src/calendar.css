@@ -1,0 +1,160 @@
+.calendar-container {
+  max-width: 788px;
+  display: flex;
+  width: calc(100% - 60px);
+  position: relative;
+  padding: 20px;
+  height: 809px;
+
+}
+.calendar {
+  padding: 20px;
+  max-width: 788px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+}
+
+.days {
+  width: 100%;
+  display: grid;
+  position: relative;
+}
+
+.day {
+  width: 100%;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 1);
+}
+.date-tutoring {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  user-select: none;
+  font-weight: 700;
+  text-align: center;
+}
+
+.lb {
+  position: relative;
+  border-radius: 100%;
+  height: 35px;
+  width: 35px;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 4;
+  pointer-events: auto;
+}
+
+.rb {
+  position: relative;
+  border-radius: 100%;
+  height: 35px;
+  width: 35px;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 4;
+  pointer-events: auto;
+}
+
+.rb img, .lb img {
+  width: 100%;
+  position: relative;
+}
+
+.rb img {
+  transform: translateX(10%) translateY(5%);
+}
+.lb img {
+  transform: translateX(-10%) translateY(5%);
+}
+
+.top-t {
+  border-top: solid #464646 1px;
+  border-left: solid #464646 1px;
+  border-right: solid #464646 1px;
+  box-sizing: border-box;
+}
+.bot-t {
+  border-bottom: solid #464646 1px;
+  border-left: solid #464646 1px;
+  border-right: solid #464646 1px;
+}
+
+.hour {
+  box-sizing: border-box;
+  background-color: whitesmoke;
+  color: black;
+  user-select: none;
+  font-size: 12px;
+  height: 20px;
+  padding: 4px;
+}
+
+.radioDuration {
+  width: 60%;
+  left: 10%;
+  right: 10%;
+  padding: 10px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.radioDuration label {
+  font-weight: 900;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%; /* Position at the middle height of the calendar */
+  left: 0%; /* Align with the left edge of the calendar */
+  right: 0%; /* Align with the right edge of the calendar */
+  transform: translateY(-50%); /* Center vertically */
+  z-index: 3;
+  pointer-events: none; 
+}
+
+.leftcover {
+  position: absolute;
+  height: 100%;
+  z-index: 2;
+  left: -5px;
+}
+
+.rightcover {
+  position: absolute;
+  height: 100%;
+  z-index: 2;
+  right: -5px;
+}
+
+.leftcover img {
+  width: 100%;
+  height: 100%;
+}
+
+.rightcover img {
+  width: 100%;
+  height: 100%;
+}
+
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading img {
+  width: 10%;
+  height: 10%;
+  aspect-ratio: 1;
+}

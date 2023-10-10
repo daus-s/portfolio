@@ -1,0 +1,15 @@
+.bio {
+  text-align: left;
+  width: 70%;
+  max-width: 678px;
+  left: 15%;
+  justify-self: center;
+}
+
+.closing {
+  text-align: center;
+}
+
+.bio h4 {
+  text-align: center;
+}

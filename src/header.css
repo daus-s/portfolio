@@ -18,3 +18,26 @@
     height: 70px;
   }
 }
+
+.TutoringHeader {
+  left: 80px;
+  right: 80px;
+  top: -21px;
+  height: 60px;
+  z-index: 1;
+  padding-top: 10px;
+  background-color: black;
+  margin: 0px 0px 0px 0px;
+  font-weight: 400;
+}
+
+.TutoringHeader h1 {
+  top: 10px;
+  position: absolute;
+}
+
+@media only screen and (max-width: 600px) {
+  .TutoringHeader {
+    height: 70px;
+  }
+}
