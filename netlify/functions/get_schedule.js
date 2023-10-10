@@ -12,6 +12,7 @@ const handler = async () => {
   console.log(uri);
 
   try {
+    console.log("hello try block")
     let today = new Date();
     today.setUTCMilliseconds(0);
     today.setUTCSeconds(0);
@@ -25,7 +26,7 @@ const handler = async () => {
     lastday.setUTCHours(0);
     lastday = lastday.setDate(lastday.getDate() + 14);
     lastday = new Date(lastday);
-    console.log(today, lastDay);
+    console.log("created dates");
 
     const clientPromise = client.connect();
     const connection = await clientPromise;
