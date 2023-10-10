@@ -25,6 +25,7 @@ const handler = async () => {
     lastday.setUTCHours(0);
     lastday = lastday.setDate(lastday.getDate() + 14);
     lastday = new Date(lastday);
+    console.log(today, lastDay);
 
     const clientPromise = client.connect();
     const connection = await clientPromise;
