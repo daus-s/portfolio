@@ -1,0 +1,17 @@
+.about {
+    text-align: left;
+    width: 70%;
+    max-width: 678px;
+    left: 15%;
+    justify-self: center;
+    margin-bottom: 20px;
+  }
+  
+  .closing {
+    text-align: center;
+  }
+  
+  .about h4 {
+    text-align: center;
+  }
+  

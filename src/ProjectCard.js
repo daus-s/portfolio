@@ -33,7 +33,7 @@ export default function ProjectCard(props) {
             <div className="date">{props.date}</div>
           </div>
           <div>
-            <img className="img" src={props.image} alt={props.alt} />
+            <img className="img" src={props.image} alt={props.alt} style={props.height?{height: props.height}:{width:'20%'}}/>
             <div className="description">{props.description}</div>
           </div>
         </a>

@@ -1,0 +1,196 @@
+html {
+  background-color: black;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter";
+  color: lime;
+  padding: 0px;
+  margin-top: 0px !important;
+  font-weight: 200;
+}
+
+body {
+  margin-top: 0px !important;
+}
+
+.Tutoring {
+  font-family: "Roboto", sans-serif;
+  color: whitesmoke;
+
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  background: linear-gradient(to bottom, #000000 50vh, #ffffff 100%);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.Tutoring p {
+  color: black;
+}
+
+.google-login {
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  display: flex;
+}
+
+.successLogin {
+  background-color: #202124;
+  color: #e8eaed;
+  width: 100%;
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: auto;
+  max-width: 192px;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.successLogin:hover {
+  background-color: #3f3f3f;
+}
+.successLogin img {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  height: 36px;
+  left: 8px;
+  margin: 12px;
+  position: relative;
+}
+
+.username-email {
+  font-size: 12px;
+  padding-top: 1px;
+}
+
+.greeting {
+  padding-bottom: 1px;
+}
+
+.successLogin .text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  position: relative;
+  top: 10px;
+}
+
+
+.radioView {
+  flex-direction: row;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 25px;
+  width: 70%;
+  max-width: 782px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: #e8eaed 2px solid;
+}
+
+label {
+  margin-bottom: 10px;
+  width: 33%;
+}
+
+.radioView [type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked {
+  font-weight: bold;
+}
+
+.resource-list {
+  min-height: calc(100vh - 101px);
+}
+
+.logout {
+  width: auto;
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 2px;
+  width: 130px;
+  height: 34px;
+  font-family: "Roboto", sans-serif;
+  top: -10px;
+  position: relative;
+  border: none;
+}
+
+.logout:hover {
+  background-color: #dadada;
+}
+
+.ReactModalPortal {
+  position: absolute;
+  z-index: 4;
+}
+
+.modalClose {
+  background-color: #dadada;
+  color: #242424;
+  border-radius: 50%;
+  padding: 4px;
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.modalClose img {
+  width: 90%;
+  height: 90%;
+}
+
+.mobileSuccessLogin {
+  background-color: #202124;
+  color: #e8eaed;
+  width: 100%;
+  padding: 0px;
+  width: auto;
+  max-width: 192px;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+
+}
+
+.mobileSuccessLogin:hover {
+  background-color: #3f3f3f;
+}
+
+.mobileSuccessLogin img {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  height: 36px;
+  margin: 2px;
+  position: relative;
+}
+
+
+.mobileLogout {
+  width: auto;
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 2px;
+  padding: 4px 1px 4px 1px;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  border: none;
+  font-size: 11px;
+}
