@@ -67,6 +67,8 @@ const handler = async (event) => {
         date: new Date(),
         entry: id,
       }
+
+
       var responseLog = logsCollection.insertOne(logEntry);
       console.log("successfully entered", logEntry ,"in log database");
 
@@ -76,19 +78,15 @@ const handler = async (event) => {
       var responseSch = scheduleCollection.insertOne(scheduleEntry);
       console.log("successfully entered", scheduleEntry ,"in schedule database");
 
-      var responseSec = secureCollection.inserOne(secEntry);
+      var responseSec = secureCollection.insertOne(secEntry);
       console.log("successfully entered", secEntry ,"in sec_events database");
 
-      await client.close();
-      console.log("closed client properly");
 
       return {
         statusCode: 200,
         body: JSON.stringify({ message: 'Log inserted successfully' })
       }
     } catch (error) {
-      await client.close();
-      console.log("closed client properly from catch block");
       return { statusCode: 500, body: error.toString() }
     } 
     
