@@ -47,7 +47,7 @@ const handler = async () => {
     const events = await scheduleCollection.find(query).toArray();
     console.log(events);
     console.log("success")
-    client.close();
+    await client.close();
     return {
       statusCode: 200,
       body: JSON.stringify(events),
