@@ -1,4 +1,4 @@
-ximport { useState } from "react";
+import { useState } from "react";
 import "./tutoringstyles.css"
 import "./resources.css"
 
