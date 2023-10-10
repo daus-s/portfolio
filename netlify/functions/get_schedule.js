@@ -4,10 +4,13 @@ const { default: mongoose } = require('mongoose');
 const uri = `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MONGO_ATLAS_PASSWORD}@cluster0.jthligq.mongodb.net/?retryWrites=true&w=majority`;
   
 
-const client = new MongoClient(uri);
 
 const handler = async () => {
   console.log("get secure schedule handler:");
+  const client = new MongoClient(uri);
+  console.log("got client");
+  console.log(uri);
+
   try {
     let today = new Date();
     today.setUTCMilliseconds(0);
@@ -42,6 +45,7 @@ const handler = async () => {
     const events = await scheduleCollection.find(query).toArray();
     console.log(events);
     console.log("success")
+    client.close();
     return {
       statusCode: 200,
       body: JSON.stringify(events),

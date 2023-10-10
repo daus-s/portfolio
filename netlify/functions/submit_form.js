@@ -3,10 +3,11 @@ const { default: mongoose } = require('mongoose');
 const uri = `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MONGO_ATLAS_PASSWORD}@cluster0.jthligq.mongodb.net/?retryWrites=true&w=majority`;
   
 
-const client = new MongoClient(uri);
 
 const handler = async (event) => {
   console.log("submit form handler:");
+  const client = new MongoClient(uri);
+  console.log("got client")
 
     try {
       console.log("entry");
@@ -78,12 +79,16 @@ const handler = async (event) => {
       var responseSec = secureCollection.inserOne(secEntry);
       console.log("successfully entered", secEntry ,"in sec_events database");
 
+      await client.close();
+      console.log("closed client properly");
 
       return {
         statusCode: 200,
         body: JSON.stringify({ message: 'Log inserted successfully' })
       }
     } catch (error) {
+      await client.close();
+      console.log("closed client properly from catch block");
       return { statusCode: 500, body: error.toString() }
     } 
     
