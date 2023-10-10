@@ -3,10 +3,11 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const { default: mongoose } = require('mongoose');
 const uri = `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MONGO_ATLAS_PASSWORD}@cluster0.jthligq.mongodb.net/?retryWrites=true&w=majority`;
   
-const client = new MongoClient(uri);
 
 const handler = async (event) => {
     console.log("get personal schedule handler");
+    const client = new MongoClient(uri);
+    console.log("got client")
     const jwt = event.queryStringParameters.jwt;
     if (jwt==="undefined") {
         return {
@@ -27,7 +28,8 @@ const handler = async (event) => {
         //load into events
         const events = await scheduleCollection.find(query).toArray();
         console.log(events);
-        //return
+        await client.close();
+
         return {
             statusCode: 200,
             body: JSON.stringify(events),
@@ -37,8 +39,10 @@ const handler = async (event) => {
         } 
     }
     catch (error) {
+        await client.close();
+        console.log("properly close connection in catch block")
         return { statusCode: 500, body: error.toString() };
-    }
+    } 
 }
 
 module.exports = { handler }
