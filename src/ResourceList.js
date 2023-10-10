@@ -1,4 +1,4 @@
-import { useState } from "react";
+ximport { useState } from "react";
 import "./tutoringstyles.css"
 import "./resources.css"
 
@@ -8,7 +8,7 @@ export default function ResourceList() {
     return (
         <div className="resource-list">
             <div className="explanation">
-                Here are some helpful documents and notes that I have made over the years. <br/><br/>Your goal here should not be to copy these but to follow my train of thought. The way these problems are approached or explanations is not one-dimensional. <br/><br/>That is, the process goes off on tangents to cover prerequisites as they become necesary. This will help connect ideas together much more clearly and explicably as well. <br/><br/>This will lay a stronger foundtation about the material. This foundation can be either formal or an intuitive understanding. And <span style={{fontWeight: '500'}}>everyone  will  have  their  strong  suits.</span> 
+                Here are some helpful documents and notes that I have made over the years. <br/><br/>Your goal here should not be to copy these but to follow my train of thought. The way these problems are approached or explained is not one-dimensional. <br/><br/>That is, the process goes off on tangents to cover prerequisites as they become necesary. This will help connect ideas together much more clearly and explicably as well. <br/><br/>This will lay a stronger foundtation about the material. This foundation can be either formal or an intuitive understanding. And <span style={{fontWeight: '500'}}>everyone  will  have  their  strong  suits.</span> 
             </div>
             <div className="listHeader">
                 <div className="type">
