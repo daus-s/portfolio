@@ -21,7 +21,7 @@ export default function HomeButton(props) {
   }, [originalSrc, hoverSrc]);
 
   return (
-    <button className="resetbutton" onClick={props.handle}>
+    <button className="resetbutton tttButton" onClick={props.handle}>
       <img
         src={originalSrc}
         id="resetbutton"

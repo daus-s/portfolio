@@ -1,4 +1,5 @@
 import "./modal.css";
+import './tttstyles.css';
 
 import React, { useEffect } from "react";
 import Popup from "reactjs-popup";
@@ -51,7 +52,7 @@ export default function ResultModal(props) {
   return (
     <Popup open={gameOver} onClose={handleClose} modal>
       <div className="modal" id="resultModal" style={width}>
-        <button className="close" id="rmcb" onClick={handleClose}>
+        <button className="close tttButton" id="rmcb" onClick={handleClose}>
           <img src={originalSrc} alt="Close." className="closeButton" />
         </button>
         <div className="modalTitle" >{message(results)}</div>

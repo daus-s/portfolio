@@ -29,7 +29,7 @@ export default function ResultModal(props) {
   return (
     <Popup open={props.open} onClose={props.onClose} modal>
       <div className="modal" id="infoModal" style={width}>
-        <button className="close" id="imcb" onClick={props.onClose}>
+        <button className="close tttButton" id="imcb" onClick={props.onClose}>
           <img src={originalSrc} alt="Close." className="closeButton" />
         </button>
         <div className="modalTitle">Welcome to Tic-Tac-Toe</div>

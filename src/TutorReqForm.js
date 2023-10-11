@@ -11,7 +11,7 @@ import { useMediaQuery } from "@mui/material";
 
 Modal.setAppElement("#root");
 
-const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const weekdays = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 const modalStyles = {
     content: {

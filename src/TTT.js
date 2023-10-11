@@ -4,7 +4,7 @@ import "./tttstyles.css";
 
 export default function TTT() {
   return (
-    <div className="App">
+    <div className="TTT">
       <TTTHeader />
       <Board />
     </div>

@@ -139,7 +139,7 @@ function durationFn(str) {
 }
 
 export default function Calendar(props) {
-  const isMobile = useMediaQuery("(max-width:652px)");
+  const isMobile = useMediaQuery("(max-width:870px)");
   const [selectedOption, setSelectedOption] = useState("dur1");
   const [duration, setDuration] = useState(2);
   const [index, setIndex] = useState(1);
@@ -149,7 +149,8 @@ export default function Calendar(props) {
   const [personalLoaded, setPersonalLoaded] = useState(false);
   const [cookies, setCookie] = useCookies(['jwt']);
 
-
+  console.log(isMobile);
+  
   const retrieveData = async () => {
     try {
       let s = await getSchedule();

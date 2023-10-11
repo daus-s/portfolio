@@ -21,7 +21,7 @@ export default function InfoButton(props) {
   }, [originalSrc, hoverSrc]);
 
   return (
-    <button className="infobutton" onClick={props.handle}>
+    <button className="infobutton tttButton" onClick={props.handle}>
       <img
         src={originalSrc}
         id="infobutton"

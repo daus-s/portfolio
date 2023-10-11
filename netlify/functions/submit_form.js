@@ -32,10 +32,10 @@ const handler = async (event) => {
       console.log("connected to pending log table");
       
       const scheduleCollection = scheduleDB.collection("events");
-      console.log("connected to event log table");
+      console.log("connected to event table");
 
       const secureCollection = scheduleDB.collection("sec_events");
-      console.log("connected to event log table");
+      console.log("connected to secure event table");
       
       const pendingEntry = {
         _id: id,
@@ -44,6 +44,7 @@ const handler = async (event) => {
 
       const start = new Date(data.start);
       const end = new Date(data.end);
+    
 
       const scheduleEntry = {
         _id: id,
@@ -54,6 +55,7 @@ const handler = async (event) => {
         desc: data.desc ? data.desc : 'none',
         start: start,
         end: end,
+        approved: false,
       }
       const secEntry = {
         _id: id,
@@ -63,7 +65,7 @@ const handler = async (event) => {
 
       const logEntry = {
         type: "insertion",
-        table: "schedule/events\npending/pending",
+        table: "schedule/events\npending/pending\nschedule/sec_events",
         date: new Date(),
         entry: id,
       }
