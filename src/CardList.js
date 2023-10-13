@@ -26,7 +26,7 @@ export default function CardList() {
         description="Tutoring sessions now available. Physics, Mathematics, Computer Science and more. Follow this link to schedule an appointment, read reviews, or find helpful resources"
         link="/tutoring"
         date="Since 2020"
-        image="https://github.com/daus-s/portfolio/blob/main/star.png?raw=true"
+        image="https://github.com/daus-s/portfolio/blob/main/public/star.png?raw=true"
         altDescription="This is a link to the tutoring page. Sessions now available."
         height='64px'
       />
