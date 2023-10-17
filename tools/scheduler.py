@@ -7,7 +7,6 @@ import database_functions as database_functions
 from dateutil.parser import parse
 
 print ("CREATE SCHEDULE...")
-
 print ("connecting to database...")
 #connect to database
 
@@ -30,22 +29,24 @@ except Exception as e:
     sys.exit(1)
 
 
-db = client['schedule']['events']
+db = client['schedule']
+
 
 user = input("enter new schedule event or enter \'EXIT\' to quit:")
 
 while user != 'EXIT':
-    json = {}
+    event = {}
+    subset = {}
     #COURSE
     user = input("enter new event title (field -> course): ")
-    json.update({"course" : user})
+    event.update({"course" : user})
     #DESC
     user = input("enter new event title (field -> desc): ")
-    json.update({"desc" : user})
+    event.update({"desc" : user})
     #EMAIL
-    json.update({"email" : email})
+    event.update({"email" : email})
     #NAME
-    json.update({"name" : name })
+    event.update({"name" : name })
     #START
     good = False
     while not good: 
@@ -70,18 +71,24 @@ while user != 'EXIT':
             print("An exception occurred")
     
     #flip if time order is wrong
-    if start > end:
+    if parse(start) > parse(end):
         t = start
         start = end
         end = t
 
-    json.update({"start" : parse(start)})
-    json.update({"end" : parse(end)})
-    
-    json.update({"approved" : True})
+    #start and end time
+    event.update({"start" : parse(start)})
+    event.update({"end" : parse(end)})
+    #all events via this script are approved
+    event.update({"approved" : True})
+
+    #subset only has start and end fields for security
+    subset.update({"start" : parse(start)})
+    subset.update({"end" : parse(end)})
+
 
     print("+++++++++++++++++++++++") 
-    print (json)    
+    print (event)    
     print("+++++++++++++++++++++++") 
 
     user = input("submit? (Y/N)")
@@ -90,10 +97,16 @@ while user != 'EXIT':
         user = input("submit? (Y/N)")
 
     if user.upper() == "Y":
-        db.insert_one(json)
+        doc = db['events'].insert_one(event)
+        subset.update({"_id" : doc.inserted_id})
+        print("+++++++++++++++++++++++") 
+        print(subset)
+        print("+++++++++++++++++++++++") 
+
+        db['sec_events'].insert_one(subset)
 
     if user.upper() == "N":
-        json = {}
+        event = {}
 
 
 
