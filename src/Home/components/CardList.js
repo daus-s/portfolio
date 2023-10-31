@@ -30,6 +30,15 @@ export default function CardList() {
       />
       <Spacer height="20px" />
       <ProjectCard
+        title="Spelling Bee Helper"
+        description="This is a Flask app used to play the NYT Games 'Spelling Bee'. IT is built using Flask, an Apple Automator app and basc HTML and CSS. Instructions for installations are provided in the README."
+        link="https://github.com/daus-s/spelling-bee/blob/main/README.md"
+        date="October 2023"
+        image="https://github.com/daus-s/portfolio/blob/main/SpellingBeeImg.PNG?raw=true"
+        altDescription="This is a Flask app used to play the NYT Games 'Spelling Bee'. "
+      />
+      <Spacer height="20px" />
+      <ProjectCard
         title="Tic Tac Toe"
         description="I created a Tic Tac Toe game on stream. I used react to build the project. Without errors, the computer will not lose. Additionally by toggling the computer first play switch you can watch the algorithm play itself. It will never lose to itself. The game as stated before has 1-person and 2-person functionality. "
         link="/tictactoe"
