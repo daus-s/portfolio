@@ -37,14 +37,27 @@ const handler = async (event) => {
       const secureCollection = scheduleDB.collection("sec_events");
       console.log("connected to secure event table");
       
-      const pendingEntry = {
-        _id: id,
-        email: data.email,
-      }
+
 
       const start = new Date(data.start);
       const end = new Date(data.end);
     
+      const pendingEntry = data.desc ? {
+        _id: id,
+        email: data.email,
+        location: data.location,
+        start: start,
+        end: end,
+        course: data.course,
+        desc: data.desc
+      } : {
+        _id: id,
+        email: data.email,
+        location: data.location,
+        start: start,
+        end: end,
+        course: data.course,
+      }
 
       const scheduleEntry = {
         _id: id,
