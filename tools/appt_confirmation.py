@@ -77,7 +77,7 @@ for appt in pending_list:
         print("declining appointment")
         print(appt)
         _id = appt['_id']
-        events.find_one_and_update({'_id': _id}, {'$set', {'approved', False}})
+        events.find_one_and_update({'_id': _id}, {'$set': {'approved': False}})
         sec.find_one_and_delete({'_id': _id})
         #Email
 
@@ -87,7 +87,8 @@ for appt in pending_list:
         print("accepting appointment")
         print(appt)
         _id = appt['_id']
-
+        events.find_one_and_update({'_id': _id}, {'$set': {'approved': True}})
+        #Email
 
         #toggling approved flag in calendar database
         
