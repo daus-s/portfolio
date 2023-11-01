@@ -4,6 +4,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import os
 import database_functions as database_functions
+from display import Display
 
 mode = 'normal'
 
@@ -20,7 +21,7 @@ dotenv_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '.
 load_dotenv(dotenv_path)
 password = os.environ.get('MONGO_ATLAS_PASSWORD_U_PYTOOLS')
 user = os.environ.get('MONGO_ATLAS_USERNAME_PYTHON')
-
+display = Display()
 
 print ("connecting to database...")
 #connect to database
@@ -64,83 +65,37 @@ if mode=='del':
 
 
 for appt in pending_list:
+    display.display(appt)
     status = input("approve or deny: ")
     while status.lower() not in ["y", "n"]:
         print("please enter correct input (Y,y,N,n)")
         status = input ("approve or deny: ")
-
-
-    current = pending_list[0]
-    del pending_list[0]
+    
 
     if status.lower() == "n":
         #decline appointnment
         print("declining appointment")
-        print(current)
-        _id = current['_id']
+        print(appt)
+        _id = appt['_id']
+        events.find_one_and_update({'_id': _id}, {'$set', {'approved', False}})
+        sec.find_one_and_delete({'_id': _id})
+        #Email
 
-        #deleting reservation in calendar database
-        
-    if status.lower() == "y":
+        #deleting reservation in calendar database   
+    elif status.lower() == "y":
         #decline appointnment
         print("accepting appointment")
-        print(current)
-        _id = current['_id']
+        print(appt)
+        _id = appt['_id']
 
 
         #toggling approved flag in calendar database
         
-
+    
     #remove from pending database
     print("removing from pending database")
+    pending.find_one_and_delete({'_id':_id})
+    display.clear()
 
 
 
-
-
-
-    
-def display(json):
-    # Create a string with a set width of 100 characters
-    output = '#' * 128 + '\n'
-    output += '# KEY' + (27*' ') + '# VALUE' + (88*' ') + '#\n'
-    output += '#' * 128 + '\n'
-
-    # Loop through the JSON fields and format them
-    for key, value in json.items():
-        output += '#' + (31 * ' ') + '#' + (94*' ') + '#\n'
-        k = str(key) + 32*' '
-        v = str(value) + 96*' '+'#'
-        value_str = str(value)
-        l = len(value_str)
-        count = 0
-        lines = []
-        line = ''
-        i = 0
-        while i < l:
-            if len(value_str) > 93 + i:
-                line = value_str[i:i+93]
-                i += 93
-                count+=1
-            else: 
-                line = value_str[i:]
-                x =(93-len(line))*' '
-                line += x
-                lines.append(line)
-                count += 1
-                break
-            lines.append(line)
-        for i in range(count):
-            if i == 0:
-                output += '# ' + k[0:30] + '# ' + v[0:93] + '#\n'
-            else:
-                output += '# ' + (' '*30) + '# ' + lines[i] + ' #\n'
-
-
-    # Add the closing outline
-    output += '#' * 128 + '\n'
-
-    # Print the formatted JSON
-    sys.stdout.write(output)
-    sys.stdout.flush()
-    return count

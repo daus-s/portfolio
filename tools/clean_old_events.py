@@ -30,7 +30,8 @@ except Exception as e:
     sys.exit(1)
 
 
-table = client['schedule']['events']
+events_table = client['schedule']['events']
+secure_table = client['schedule']['sec_events']
 
 today = datetime.datetime.utcnow()
 midnight_today = today.replace(hour=0, minute=0, second=0, microsecond=0) # Returns a copy
@@ -42,9 +43,15 @@ query = {
     ]
 }
 
-i = table.count_documents(query)
+initial_events = events_table.count_documents({})
+initial_secure = secure_table.count_documents({})
 
-results = table.delete_many(query)
+results = events_table.delete_many(query)
+results = secure_table.delete_many(query)
 
-x = table.count_documents(query)
-print(f'deleted {i-x} events starting or ending before {midnight_today}')
+
+final_events = events_table.count_documents({})
+final_secure = secure_table.count_documents({})
+
+print(f'deleted {initial_events-final_events} events starting or ending before {midnight_today} from events table')
+print(f'deleted {initial_secure-final_secure} events starting or ending before {midnight_today} from sec_events table')
