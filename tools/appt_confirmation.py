@@ -78,6 +78,7 @@ for appt in pending_list:
         print("declining appointment")
         print(current)
         _id = current['_id']
+        
 
         #deleting reservation in calendar database
         
@@ -99,7 +100,7 @@ for appt in pending_list:
 
 
 
-    
+
 def display(json):
     # Create a string with a set width of 100 characters
     output = '#' * 128 + '\n'
@@ -144,3 +145,8 @@ def display(json):
     sys.stdout.write(output)
     sys.stdout.flush()
     return count
+
+def clear(count):
+    sys.stdout.write((128*' ') + '\n')
+    sys.stdout.flush()
+    
