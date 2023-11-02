@@ -62,7 +62,7 @@ if mode=='del':
     pending.delete_many({})
     sys.exit()
     
-
+display.clear()
 
 for appt in pending_list:
     display.display(appt)
