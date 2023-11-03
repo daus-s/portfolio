@@ -39,6 +39,7 @@ function eventString(date) {
 
   return `${weekdays[date.getUTCDay()]} ${date.getUTCMonth()+1}/${date.getUTCDate()} ${date.getUTCHours() == 12 ? date.getUTCHours() : date.getUTCHours()%12}:${date.getUTCMinutes() < 10 ? '0' + date.getUTCMinutes() : date.getUTCMinutes()} ${date.getUTCHours()>=12?'PM':'AM'}`;
 
+
 }
 
 
