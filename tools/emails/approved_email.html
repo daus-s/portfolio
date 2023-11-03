@@ -49,6 +49,10 @@
             margin-top: 20px;
         }
 
+        .button:visited {
+            color: #ffffff;
+        }
+
         .button:hover {
             background-color: #0056b3;
         }
@@ -63,27 +67,19 @@
             color: #555555;
 
         }
-        li::before {
-            content: "\2022";
-            color: #007BFF;
-            font-size: 1.2em;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
+        
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Appointment Approved</h2>
         <p>Your appointment has been approved. Details are as follows:</p>
-        <p>Please respond with any materials relating to the appointment or any problems you would like to go over specifically.</p>
-
         <ul>
             <li>Date: [APPOINTMENT_DATE]</li>
             <li>Time: [APPOINTMENT_TIME]</li>
             <li>Location: [APPOINTMENT_LOCATION]</li>
         </ul>
+        <p>Please respond with any materials relating to the appointment or any problems you would like to go over specifically.</p>
         <p>Thank you for scheduling an appointment with us. We look forward to working with you!</p>
         <div class="contact-info">
             <p>Contact us at: <a href="dauscarmichael@gmail.com">dauscarmichael@gmail.com</a></p>

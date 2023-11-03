@@ -81,6 +81,8 @@ while user != 'EXIT':
     event.update({"end" : parse(end)})
     #all events via this script are approved
     event.update({"approved" : True})
+    event.update({"display" : True})
+
 
     #subset only has start and end fields for security
     subset.update({"start" : parse(start)})
