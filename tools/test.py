@@ -1,11 +1,6 @@
-import time
-from display import Display
-import os
+from email_client import EmailClient
 
+e = EmailClient()
+client = MongoClient(uri, server_api=ServerApi('1'))
 
-
-d = Display()
-i = d.display({'key': 'value', 'a': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut urna a augue lacinia posuere. Fusce ullamcorper metus ac lorem pharetra, non hendrerit libero consectetur. Duis vulputate lacus at nisl laoreet, vel bibendum libero iaculis. Ut auctor, risus id vestibulum mattis, sapien augue vestibulum neque, in cursus ex dui vitae elit. Integer non augue sit amet dolor venenatis tempor vitae nec arcu. Quisque vel ullamcorper sem. Morbi bibendum quam a efficitur tempus. Fusce egestas urna a est hendrerit, a ultricies dolor egestas. Suspendisse vel libero non ligula vestibulum finibus. Duis sit amet urna non urna rhoncus commodo. Nulla euismod viverra dui, non vestibulum massa ullamcorper at. In id metus finibus, venenatis ex vitae, fermentum arcu. Maecenas quis sapien vestibulum, viverra dui in, tristique libero. Cras eu nulla eu urna volutpat interdum ac eu justo. Suspendisse potenti. Phasellus tristique euismod urna, eu convallis purus hendrerit ut. Duis efficitur libero id diam hendrerit, id vestibulum tellus consequat. Nulla facilisi. Ut gravida elementum erat, nec volutpat ante accumsan in. Etiam tempus libero a massa consequat, vitae volutpat nisi lacinia. Vestibulum dictum finibus malesuada. Phasellus vitae tristique orci. Curabitur malesuada a risus at cursus. Integer hendrerit eros at libero suscipit luctus. In venenatis, arcu non euismod dapibus, lacus felis cursus erat, in bibendum nisi risus a felis. Sed ut ipsum ullamcorper, malesuada libero in, interdum ligula. Aenean interdum, felis at laoreet congue, tortor augue scelerisque tortor, a vestibulum sem turpis ut purus. Nunc pellentesque felis a odio elementum commodo. Nulla facilisi. Curabitur auctor mi sit amet massa commodo vehicula. Nam nec risus vitae arcu dapibus lacinia. Suspendisse ullamcorper lectus et nisl ultricies, sed bibendum turpis tempor. Suspendisse potenti. Sed auctor urna at eros vestibulum, eu malesuada nunc dictum. Vestibulum in est id ex bibendum hendrerit. Pellentesque dictum euismod arcu, eu dapibus dolor dictum eu. Suspendisse potenti. Integer sit amet turpis dui. Curabitur dictum libero ac ex ultrices commodo. Sed tristique turpis quis enim mollis, eu cursus urna venenatis. Curabitur blandit euismod elit, et feugiat quam. Praesent euismod eleifend velit in cursus. Vestibulum maximus non tellus eu commodo. Vivamus eu nunc eget massa vestibulum congue in et purus. Sed eu odio ac turpis posuere vestibulum. In vehicula magna vitae felis vehicula, in hendrerit nisl tincidunt. Vestibulum tincidunt purus id eros feugiat, ut cursus odio convallis. Integer ut tristique ante. Duis venenatis orci at finibus iaculis. Nullam volutpat libero et ligula feugiat, eu fringilla libero finibus. Duis in odio', 'bottle': 'filled'})
-input('approve or deny(Y/N)')
-input('reason 1,2,3,4')
-d.clear()
+pending = client['pending']['pending']
