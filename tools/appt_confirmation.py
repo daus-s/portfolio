@@ -72,6 +72,7 @@ if mode=='del':
 display.clear()
 
 for appt in pending_list:
+    display.clear()
     display.display(appt)
     status = input("approve or deny: ")
     while status.lower() not in ["y", "n"]:
@@ -108,14 +109,21 @@ for appt in pending_list:
     elif status.lower() == "y":
         #decline appointnment
         print("accepting appointment")
-        print(appt)
         _id = appt['_id']
+        record = {
+            "type": "approval",
+            "table": "schedule/events   pending/pending   schedule/sec_events",
+            "date": datetime.now(),
+            "entry": _id,
+            "info": appt
+        }
+        log.insert_one(record)
         events.find_one_and_update({'_id': _id}, {'$set': {'approved': True}})
         #Email
         #get fields
         chrono = appt['start']
 
-        date = chrono.strftime("%d/%m") #str
+        date = chrono.strftime("%m/%d") #str
         time = chrono.strftime("%H:%M") #str
         location = appt['location']
         email.send_approval(appt['email'], date, time, location)
@@ -125,15 +133,7 @@ for appt in pending_list:
     #remove from pending database
     print("removing from pending database")
     pending.find_one_and_delete({'_id':_id})
-    #inserting deletion log and data into LOG
-    record = {}
-    record.update({"type": "deletion"})
-    record.update({"table": "schedule/events   pending/pending   schedule/sec_events"})
-    record.update({"date": datetime.now()})
-    record.update({"entry": _id})
-    record.update({"info": appt})
-    log.insert_one(record)
-    #or do approval
+    
 
 
 
