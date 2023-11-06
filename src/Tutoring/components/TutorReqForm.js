@@ -177,7 +177,7 @@ function TutorReqForm(props) {
   
 
   return (
-    <div id="tutorReqForm" style={{zIndex : "4", width:'100%'}}>
+    <div id="tutorReqForm" style={{zIndex : "4", width:'100%', backgroundColor:'white'}}>
       <Modal isOpen={submissionModalStatus} style={modalStyles}>
         <button className="modalClose" onClick={closeSubmissionModal}>
           <img src="https://github.com/daus-s/portfolio/blob/main/public/close.png?raw=true" alt="close button"/>

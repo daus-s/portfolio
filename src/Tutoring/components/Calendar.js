@@ -149,7 +149,6 @@ export default function Calendar(props) {
   const [personalLoaded, setPersonalLoaded] = useState(false);
   const [cookies, setCookie] = useCookies(['jwt']);
 
-  console.log(isMobile);
   
   const retrieveData = async () => {
     try {
@@ -218,57 +217,59 @@ export default function Calendar(props) {
   };
 
   return (
-    <div className="calendar-container" style={isMobile?{zIndex:"3", ...mobileContainerStyling}:{zIndex:'3'}}>
-      <div className="calendar" style={isMobile?mobileCalendarStying:{}}>
-        <div className="buttons-container">
-          <LeftButton
-            onClick={handleLeft}
-            style={isMobile ? { left: "calc(16%)" } : { left: "calc(7%)" }}
-          />
-          <RightButton
-            onClick={handleRight}
-            style={isMobile ? { right: "calc(16%)" } : { right: "calc(7%)" }}
-          />
-        </div>
-        <Days days={view} duration={duration} time={props.time} setTime={props.setTime} index={index-1} schedule={schedule}/>
-        <Legend/>
-        <div className="radioDuration">
-          <label>
-            <input
-              type="radio"
-              name="option"
-              value="dur1"
-              onChange={handleRadioChange}
-              checked={selectedOption === "dur1"}
+    <div className="wide gradient">
+      <div className="calendar-container" style={isMobile?{zIndex:"3", ...mobileContainerStyling}:{zIndex:'3'}}>
+        <div className="calendar" style={isMobile?mobileCalendarStying:{}}>
+          <div className="buttons-container">
+            <LeftButton
+              onClick={handleLeft}
+              style={isMobile ? { left: "calc(16%)" } : { left: "calc(7%)" }}
             />
-            1 Hour
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="option"
-              value="dur112"
-              onChange={handleRadioChange}
-              checked={selectedOption === "dur112"}
+            <RightButton
+              onClick={handleRight}
+              style={isMobile ? { right: "calc(16%)" } : { right: "calc(7%)" }}
             />
-            1&#189; Hours
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="option"
-              value="dur2"
-              onChange={handleRadioChange}
-              checked={selectedOption === "dur2"}
-            />
-            2 Hours
-          </label>
+          </div>
+          <Days days={view} duration={duration} time={props.time} setTime={props.setTime} index={index-1} schedule={schedule}/>
+          <Legend/>
+          <div className="radioDuration">
+            <label>
+              <input
+                type="radio"
+                name="option"
+                value="dur1"
+                onChange={handleRadioChange}
+                checked={selectedOption === "dur1"}
+              />
+              1 Hour
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="option"
+                value="dur112"
+                onChange={handleRadioChange}
+                checked={selectedOption === "dur112"}
+              />
+              1&#189; Hours
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="option"
+                value="dur2"
+                onChange={handleRadioChange}
+                checked={selectedOption === "dur2"}
+              />
+              2 Hours
+            </label>
+          </div>
+          <div className="loading" hidden={scheduleLoaded} style={scheduleLoaded ? { "pointerEvents": "none" } : {}}>
+            <img src="https://github.com/daus-s/portfolio/blob/main/public/loading-gif.gif?raw=true" alt="loading" hidden={scheduleLoaded}/>
+          </div>
         </div>
-        <div className="loading" hidden={scheduleLoaded} style={scheduleLoaded ? { "pointerEvents": "none" } : {}}>
-          <img src="https://github.com/daus-s/portfolio/blob/main/public/loading-gif.gif?raw=true" alt="loading" hidden={scheduleLoaded}/>
-        </div>
-      </div>
 
+      </div>
     </div>
   );
 }
