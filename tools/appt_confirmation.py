@@ -4,6 +4,9 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import os
 import database_functions as database_functions
+from display import Display
+from datetime import datetime
+from email_client import EmailClient
 
 mode = 'normal'
 
@@ -20,7 +23,8 @@ dotenv_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '.
 load_dotenv(dotenv_path)
 password = os.environ.get('MONGO_ATLAS_PASSWORD_U_PYTOOLS')
 user = os.environ.get('MONGO_ATLAS_USERNAME_PYTHON')
-
+display = Display()
+email = EmailClient()
 
 print ("connecting to database...")
 #connect to database
@@ -43,6 +47,9 @@ pending = client['pending']['pending']
 # to modify these
 sec = client['schedule']['sec_events']
 events = client['schedule']['events']
+#and report to this
+log = client['log']['tutoring']
+
 
 print("gathered all pending appointments")
 
@@ -51,6 +58,7 @@ pending_list = list(pending.find({}))
 
 if len(pending_list) == 0:
     print ("no pending reservations")
+    sys.exit()
 
 if mode=='del':
     OK = ''
@@ -61,92 +69,71 @@ if mode=='del':
     pending.delete_many({})
     sys.exit()
     
-
+display.clear()
 
 for appt in pending_list:
+    display.clear()
+    display.display(appt)
     status = input("approve or deny: ")
     while status.lower() not in ["y", "n"]:
         print("please enter correct input (Y,y,N,n)")
         status = input ("approve or deny: ")
-
-
-    current = pending_list[0]
-    del pending_list[0]
+    
 
     if status.lower() == "n":
         #decline appointnment
         print("declining appointment")
-        print(current)
-        _id = current['_id']
-        
+        code = input('reason for declining:\n\t1) Location conflict\n\t2) Non-covered material \n\t3) Timing conflict \n\t4) Not specified\n\t5) Other (specified)\n')
+        while code not in ['1','2','3','4', '5']:
+            code = input('enter 1, 2, 3, 4, or 5: ')
 
-        #deleting reservation in calendar database
-        
-    if status.lower() == "y":
+        _id = appt['_id']
+        record = {
+            "type": "deletion",
+            "table": "schedule/events   pending/pending   schedule/sec_events",
+            "date": datetime.now(),
+            "entry": _id,
+            "info": appt
+        }
+        log.insert_one(record)
+        events.find_one_and_delete({'_id': _id})
+        sec.find_one_and_delete({'_id': _id})
+        pending.find_one_and_delete({'_id':_id})
+        #Email
+        if int(code) == 5:
+            reason = input ('Reason: ')
+            email.send_deny(appt['email'], int(code), reason=reason)
+        else:
+            email.send_deny(appt['email'], int(code))
+        #deleting reservation in calendar database   
+    elif status.lower() == "y":
         #decline appointnment
         print("accepting appointment")
-        print(current)
-        _id = current['_id']
+        _id = appt['_id']
+        record = {
+            "type": "approval",
+            "table": "schedule/events   pending/pending   schedule/sec_events",
+            "date": datetime.now(),
+            "entry": _id,
+            "info": appt
+        }
+        log.insert_one(record)
+        events.find_one_and_update({'_id': _id}, {'$set': {'approved': True}})
+        #Email
+        #get fields
+        chrono = appt['start']
 
-
+        date = chrono.strftime("%m/%d") #str
+        time = chrono.strftime("%H:%M") #str
+        location = appt['location']
+        email.send_approval(appt['email'], date, time, location)
         #toggling approved flag in calendar database
         
-
+    
     #remove from pending database
     print("removing from pending database")
-
-
-
-
-
-
-
-def display(json):
-    # Create a string with a set width of 100 characters
-    output = '#' * 128 + '\n'
-    output += '# KEY' + (27*' ') + '# VALUE' + (88*' ') + '#\n'
-    output += '#' * 128 + '\n'
-
-    # Loop through the JSON fields and format them
-    for key, value in json.items():
-        output += '#' + (31 * ' ') + '#' + (94*' ') + '#\n'
-        k = str(key) + 32*' '
-        v = str(value) + 96*' '+'#'
-        value_str = str(value)
-        l = len(value_str)
-        count = 0
-        lines = []
-        line = ''
-        i = 0
-        while i < l:
-            if len(value_str) > 93 + i:
-                line = value_str[i:i+93]
-                i += 93
-                count+=1
-            else: 
-                line = value_str[i:]
-                x =(93-len(line))*' '
-                line += x
-                lines.append(line)
-                count += 1
-                break
-            lines.append(line)
-        for i in range(count):
-            if i == 0:
-                output += '# ' + k[0:30] + '# ' + v[0:93] + '#\n'
-            else:
-                output += '# ' + (' '*30) + '# ' + lines[i] + ' #\n'
-
-
-    # Add the closing outline
-    output += '#' * 128 + '\n'
-
-    # Print the formatted JSON
-    sys.stdout.write(output)
-    sys.stdout.flush()
-    return count
-
-def clear(count):
-    sys.stdout.write((128*' ') + '\n')
-    sys.stdout.flush()
+    pending.find_one_and_delete({'_id':_id})
     
+
+
+

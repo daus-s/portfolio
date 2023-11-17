@@ -1,0 +1,17 @@
+.hover-title {
+    font-size: 30px;
+    font-weight: 500;
+    
+}
+
+.AL {
+    text-align: left;
+}
+.AR {
+    text-align: right;
+}
+
+.hover-text {
+    padding: 15px;
+    margin: 25px;
+}

@@ -2,13 +2,12 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const { default: mongoose } = require('mongoose');
 const uri = `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MONGO_ATLAS_PASSWORD}@cluster0.jthligq.mongodb.net/?retryWrites=true&w=majority`;
   
-
+const client = new MongoClient(uri); //POSBSIBLE FIX MOVE OUTSIDE OF FUNCTION
+console.log("got client")
 
 const handler = async (event) => {
-  console.log("submit form handler:");
-  const client = new MongoClient(uri);
-  console.log("got client")
-
+    console.log("submit form handler:");
+    
     try {
       console.log("entry");
       var id = new mongoose.Types.ObjectId();
@@ -37,14 +36,27 @@ const handler = async (event) => {
       const secureCollection = scheduleDB.collection("sec_events");
       console.log("connected to secure event table");
       
-      const pendingEntry = {
-        _id: id,
-        email: data.email,
-      }
+
 
       const start = new Date(data.start);
       const end = new Date(data.end);
     
+      const pendingEntry = data.desc ? {
+        _id: id,
+        email: data.email,
+        location: data.location,
+        start: start,
+        end: end,
+        course: data.course,
+        desc: data.desc
+      } : {
+        _id: id,
+        email: data.email,
+        location: data.location,
+        start: start,
+        end: end,
+        course: data.course,
+      }
 
       const scheduleEntry = {
         _id: id,
@@ -65,23 +77,23 @@ const handler = async (event) => {
 
       const logEntry = {
         type: "insertion",
-        table: "schedule/events\npending/pending\nschedule/sec_events",
+        table: "schedule/events   pending/pending   schedule/sec_events",
         date: new Date(),
         entry: id,
       }
 
 
-      var responseLog = logsCollection.insertOne(logEntry);
-      console.log("successfully entered", logEntry ,"in log database");
+      var responseLog = await logsCollection.insertOne(logEntry);
+      console.log((responseLog ? ("successfully entered ") : ("failed to enter ")), logEntry ,"in log database");
 
-      var responsePen = pendingCollection.insertOne(pendingEntry);     
-      console.log("successfully entered", pendingEntry ,"in pending database");
+      var responsePen = await pendingCollection.insertOne(pendingEntry);     
+      console.log((responsePen ? ("successfully entered ") : ("failed to enter ")), pendingEntry ,"in pending database");
 
-      var responseSch = scheduleCollection.insertOne(scheduleEntry);
-      console.log("successfully entered", scheduleEntry ,"in schedule database");
+      var responseSch = await scheduleCollection.insertOne(scheduleEntry);
+      console.log((responseSch ? ("successfully entered ") : ("failed to enter ")), scheduleEntry ,"in schedule database");
 
-      var responseSec = secureCollection.insertOne(secEntry);
-      console.log("successfully entered", secEntry ,"in sec_events database");
+      var responseSec = await secureCollection.insertOne(secEntry);
+      console.log((responseSec ? ("successfully entered ") : ("failed to enter ")), secEntry ,"in sec_events database");
 
 
       return {

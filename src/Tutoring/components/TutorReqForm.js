@@ -37,7 +37,8 @@ const url = "/.netlify/functions/submit_form"
 function eventString(date) {
   date = new Date(date);
 
-  return `${weekdays[date.getUTCDay()]} ${date.getUTCMonth()}/${date.getUTCDate()} ${date.getUTCHours()%12}:${date.getUTCMinutes() < 10 ? '0' + date.getUTCMinutes() : date.getUTCMinutes()} ${date.getUTCHours()>12?'PM':'AM'}`;
+  return `${weekdays[date.getUTCDay()]} ${date.getUTCMonth()+1}/${date.getUTCDate()} ${date.getUTCHours() == 12 ? date.getUTCHours() : date.getUTCHours()%12}:${date.getUTCMinutes() < 10 ? '0' + date.getUTCMinutes() : date.getUTCMinutes()} ${date.getUTCHours()>=12?'PM':'AM'}`;
+
 
 }
 
@@ -176,7 +177,7 @@ function TutorReqForm(props) {
   
 
   return (
-    <div id="tutorReqForm" style={{zIndex : "4", width:'100%'}}>
+    <div id="tutorReqForm" style={{zIndex : "4", width:'100%', backgroundColor:'white'}}>
       <Modal isOpen={submissionModalStatus} style={modalStyles}>
         <button className="modalClose" onClick={closeSubmissionModal}>
           <img src="https://github.com/daus-s/portfolio/blob/main/public/close.png?raw=true" alt="close button"/>
