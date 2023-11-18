@@ -17,17 +17,16 @@ function message(result) {
   if (result === "computer") {
     return "The computer won!";
   }
-  if (result === "computer") {
-    return "The computer won!";
-  }
+
   if (result === "user") {
     return "YOU HAVE DONE THE IMPOSSIBLE, CLAIM YOUR PRIZE FOR BEATING THE COMPUTER!";
   }
 }
 
 export default function ResultModal(props) {
-  const { gameOver, handleClose, results } = props;
+  const { gameOver, handleClose, results, gameLog } = props;
 
+  //submit to DB here
   const originalSrc =
     "https://github.com/daus-s/portfolio/blob/main/public/close-gray.png?raw=true";
   const hoverSrc =

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import FirstPlayerSwitch from "./FirstPlayerSwitch";
 import TwoPersonMode from "./TwoPersonMode";
 import ResultModal from "./ResultModal";
-import { useMediaQuery } from "@mui/material";
+import { getTableRowUtilityClass, useMediaQuery } from "@mui/material";
 import HomeButton from "./HomeButton";
 import ResetButton from "./ResetButton";
 import SimulateSwitch from "./SimulateSwitch";
@@ -73,16 +73,22 @@ function oddElementOut(a, b, c) {
   }
 }
 
-function results(full, winner, firstPlay, twoPersonMode) {
+function results(full, winner, firstPlay, twoPersonMode, log) {
   if (full && !winner) {
+    suffix = ':D';
+    log((prev) => prev + suffix);
     return "tie";
   }
   if (winner) {
     if (!twoPersonMode) {
       if (winner === "X") {
+        suffix = ':X';
+        log((prev) => prev + suffix);
         return firstPlay ? "computer" : "user";
       } //winner is O
       else {
+        suffix = ':O';
+        log((prev) => prev + suffix);
         return firstPlay ? "user" : "computer";
       }
     } else {
@@ -129,9 +135,22 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-function makePlay(squares, firstPlay, turn) {
+function getWait() {
+  //attribution: Anthony Hart
+  return Math.floor(Math.random() * (565-127)) + 127
+}
+function makePlay(squares, firstPlay, turn, log) {
+  /*
+  lie to them
+
+  they dont know
+
+  that it doesnt need that much time to compute
+  */
+  let wait = getWait();
+  setTimeout(() => {
   if (
-    results(isGridFull(squares), checkWinConditions(squares), firstPlay, false)
+    results(isGridFull(squares), checkWinConditions(squares), firstPlay, false, log)
   ) {
     return squares;
   }
@@ -145,6 +164,7 @@ function makePlay(squares, firstPlay, turn) {
     //try to play center square
     if (!squares[4]) {
       print(comp + " plays 4 via center rule");
+      log((prev) => prev + 4);
       squares[4] = comp;
       return squares;
     }
@@ -197,6 +217,7 @@ function makePlay(squares, firstPlay, turn) {
       if (!squares[win[i]]) {
         //make the play and win -- play to win, not to not lose
         print(comp + " plays " + win[i] + " via winning move");
+        log((prev) => prev + i);
         squares[win[i]] = comp;
         return squares;
       }
@@ -204,6 +225,7 @@ function makePlay(squares, firstPlay, turn) {
     for (let i = 0; i < lose.length; i++) {
       if (!squares[lose[i]]) {
         //make the play and stay alive brother
+        log((prev) => prev + i);
         squares[lose[i]] = comp;
         print(comp + " plays " + lose[i] + " via blocking losing move");
         return squares;
@@ -224,21 +246,25 @@ function makePlay(squares, firstPlay, turn) {
       let choice = getRandomInt(4);
       if (choice === 0) {
         print(comp + " plays 0 via play corners RD2");
+        log((prev) => prev + 0);
         squares[0] = comp;
         return squares;
       }
       if (choice === 1) {
         print(comp + " plays 2 via play corners RD2");
+        log((prev) => prev + 2);
         squares[2] = comp;
         return squares;
       }
       if (choice === 2) {
         print(comp + " plays 6 via play corners RD2");
+        log((prev) => prev + 6);
         squares[6] = comp;
         return squares;
       }
       if (choice === 3) {
         print(comp + " plays 8 via play corners RD2");
+        log((prev) => prev + 8);
         squares[8] = comp;
         return squares;
       }
@@ -249,23 +275,27 @@ function makePlay(squares, firstPlay, turn) {
       (squares[2] === player && squares[6] === player)
     ) {
       if (!squares[1]) {
+        log((prev) => prev + 1);
         squares[1] = comp;
         print(comp + " plays 1 via blocking forked corners play");
         return squares;
       }
       if (!squares[3]) {
+        log((prev) => prev + 3);
         squares[3] = comp;
         print(comp + " plays 3 via blocking forked corners play");
 
         return squares;
       }
       if (!squares[5]) {
+        log((prev) => prev + 5);
         squares[5] = comp;
         print(comp + " plays 5 via blocking forked corners play");
 
         return squares;
       }
       if (!squares[7]) {
+        log((prev) => prev + 7);
         squares[7] = comp;
         print(comp + " plays 7 via blocking forked corners play");
 
@@ -275,6 +305,7 @@ function makePlay(squares, firstPlay, turn) {
 
     if (squares[1] === player && squares[3] === player) {
       if (!squares[0]) {
+        log((prev) => prev + 0);
         squares[0] = comp;
         print(comp + " plays 0 via blocking edging play");
         return squares;
@@ -282,6 +313,7 @@ function makePlay(squares, firstPlay, turn) {
     }
     if (squares[1] === player && squares[5] === player) {
       if (!squares[2]) {
+        log((prev) => prev + 2);
         squares[2] = comp;
         print(comp + " plays 2 via blocking edging play");
         return squares;
@@ -289,6 +321,7 @@ function makePlay(squares, firstPlay, turn) {
     }
     if (squares[5] === player && squares[7] === player) {
       if (!squares[8]) {
+        log((prev) => prev + 8);
         squares[8] = comp;
         print(comp + " plays 8 via blocking edging play");
         return squares;
@@ -296,6 +329,7 @@ function makePlay(squares, firstPlay, turn) {
     }
     if (squares[7] === player && squares[3] === player) {
       if (!squares[6]) {
+        log((prev) => prev + 6);
         squares[6] = comp;
         print(comp + " plays 6 via blocking edging play");
         return squares;
@@ -316,6 +350,7 @@ function makePlay(squares, firstPlay, turn) {
           if (order[i] == c[a]) {
             if (!squares[c[a]]) {
               //the question is to prioritize corners or to avoid blocked lines
+              log((prev) => prev + c[a]);
               squares[c[a]] = comp;
               print(comp + " plays " + c[a] + " via common lines");
               return squares;
@@ -326,21 +361,25 @@ function makePlay(squares, firstPlay, turn) {
     }
 
     if (!squares[0]) {
+      log((prev) => prev + 0);
       squares[0] = comp;
       print(comp + " plays 0 via play corners");
       return squares;
     }
     if (!squares[2]) {
+      log((prev) => prev + 2);
       squares[2] = comp;
       print(comp + " plays 2 via play corners");
       return squares;
     }
     if (!squares[6]) {
+      log((prev) => prev + 6);
       squares[6] = comp;
       print(comp + " plays 6 via play corners");
       return squares;
     }
     if (!squares[8]) {
+      log((prev) => prev + 8);
       squares[8] = comp;
       print(comp + " plays 8 via play corners");
       return squares;
@@ -349,16 +388,19 @@ function makePlay(squares, firstPlay, turn) {
     //play corners
     if (squares[0] === player) {
       if (!squares[6]) {
+        log((prev) => prev + 6);
         squares[6] = comp;
         print(comp + " plays 6 via play corners in response");
         return squares;
       }
       if (!squares[2]) {
+        log((prev) => prev + 2);
         squares[2] = comp;
         print(comp + " plays 2 via play corners in response");
         return squares;
       }
       if (!squares[8]) {
+        log((prev) => prev + 8);
         squares[8] = comp;
         print(comp + " plays 8 via play corners in response");
         return squares;
@@ -366,16 +408,19 @@ function makePlay(squares, firstPlay, turn) {
     }
     if (squares[2] === player) {
       if (!squares[8]) {
+        log((prev) => prev + 8);
         squares[8] = comp;
         print(comp + " plays 8 via play corners in response");
         return squares;
       }
       if (!squares[0]) {
+        log((prev) => prev + 0);
         squares[0] = comp;
         print(comp + " plays 0 via play corners in response");
         return squares;
       }
       if (!squares[6]) {
+        log((prev) => prev + 6);
         squares[6] = comp;
         print(comp + " plays 6 via play corners in response");
         return squares;
@@ -383,16 +428,19 @@ function makePlay(squares, firstPlay, turn) {
     }
     if (squares[6] === player) {
       if (!squares[8]) {
+        log((prev) => prev + 8);
         squares[8] = comp;
         print(comp + " plays 8 via play corners in response");
         return squares;
       }
       if (!squares[0]) {
+        log((prev) => prev + 0);
         squares[0] = comp;
         print(comp + " plays 0 via play corners in response");
         return squares;
       }
       if (!squares[2]) {
+        log((prev) => prev + 2);
         squares[2] = comp;
         print(comp + " plays 2 via play corners in response");
         return squares;
@@ -400,16 +448,19 @@ function makePlay(squares, firstPlay, turn) {
     }
     if (squares[8] === player) {
       if (!squares[2]) {
+        log((prev) => prev + 2);
         squares[2] = comp;
         print(comp + " plays 2 via play corners in response");
         return squares;
       }
       if (!squares[6]) {
+        log((prev) => prev + 6);
         squares[6] = comp;
         print(comp + " plays 6 via play corners in response");
         return squares;
       }
       if (!squares[0]) {
+        log((prev) => prev + 0);
         squares[0] = comp;
         print(comp + " plays 0 via play corners in response");
         return squares;
@@ -429,9 +480,10 @@ function makePlay(squares, firstPlay, turn) {
           openings[getRandomInt(openings.length)] +
           " via random square"
       );
-      squares[openings[getRandomInt(openings.length)]] = comp;
+      let sel = openings[getRandomInt(openings.length)]
+      squares[sel] = comp;
     }
-  }
+  }} , wait);
   return squares;
 }
 
@@ -474,6 +526,7 @@ export default function Board() {
   const [simulating, setSimulating] = useState(false);
   const isMobile = useMediaQuery("(max-width:592px)");
   const [popupOpen, setPopupOpen] = useState(true);
+  const [gameObject, setGameObject] = useState('')
 
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
@@ -515,7 +568,8 @@ export default function Board() {
           isGridFull(squares),
           checkWinConditions(squares),
           firstPlay,
-          twoPersonMode
+          twoPersonMode,
+          setGameObject
         )
       ) {
         return;
@@ -530,7 +584,8 @@ export default function Board() {
           isGridFull(squares),
           checkWinConditions(squares),
           firstPlay,
-          twoPersonMode
+          twoPersonMode,
+          setGameObject
         )
       ) {
         return;
@@ -551,7 +606,8 @@ export default function Board() {
         isGridFull(squares),
         checkWinConditions(squares),
         firstPlay,
-        twoPersonMode
+        twoPersonMode,
+        setGameObject
       )
     ) {
       return;
@@ -582,6 +638,7 @@ export default function Board() {
     const newSquares = squares.slice();
     let newTurn;
     if (newSquares[i] === null) {
+      log((prev) => prev + i);
       newSquares[i] = turn;
       newTurn = turn === "X" ? "O" : "X";
       setSquares(newSquares);
@@ -618,6 +675,8 @@ export default function Board() {
   function resetBoard() {
     setSquares(Array(9).fill(null));
     setTurn("X");
+    let prefix = twoPersonMode ? ('2p') : (simulating ? ('sm') : (firstPlay ? ('cf') : ('pf')))
+    setGameObject(`${prefix}:`);
     if (!twoPersonMode && firstPlay) {
       setSquares(makePlay(Array(9).fill(null), firstPlay, "X"));
       const newTurn = "O";
@@ -679,6 +738,7 @@ export default function Board() {
           twoPersonMode
         )}
         handleClose={resetBoard}
+        gamelog={gameObject}
       />
       <InfoModal
         open={popupOpen}
