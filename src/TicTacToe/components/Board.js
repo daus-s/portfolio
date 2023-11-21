@@ -73,25 +73,28 @@ function oddElementOut(a, b, c) {
   }
 }
 
-function results(full, winner, firstPlay, twoPersonMode, log) {
+function results(full, winner, firstPlay, twoPersonMode, log, record) {
+  let b = !(record.endsWith(':D') || record.endsWith(':X') || record.endsWith(':O'))
   if (full && !winner) {
-    suffix = ':D';
-    log((prev) => prev + suffix);
+    let suffix = ':D';
+    if (b) log((prev) => prev + suffix);
     return "tie";
   }
   if (winner) {
     if (!twoPersonMode) {
       if (winner === "X") {
-        suffix = ':X';
-        log((prev) => prev + suffix);
+        let suffix = ':X';
+        if (b) log((prev) => prev + suffix);
         return firstPlay ? "computer" : "user";
       } //winner is O
       else {
-        suffix = ':O';
-        log((prev) => prev + suffix);
+        let suffix = ':O';
+        if (b) log((prev) => prev + suffix);
         return firstPlay ? "user" : "computer";
       }
     } else {
+      let suffix = `:${winner}`;
+      if (b) log((prev) => prev + suffix);
       return winner;
     }
   } else return null;
@@ -139,7 +142,8 @@ function getWait() {
   //attribution: Anthony Hart
   return Math.floor(Math.random() * (565-127)) + 127
 }
-function makePlay(squares, firstPlay, turn, log) {
+
+function makePlay(squares, firstPlay, turn, log, record) {
   /*
   lie to them
 
@@ -150,7 +154,7 @@ function makePlay(squares, firstPlay, turn, log) {
   let wait = getWait();
   setTimeout(() => {
   if (
-    results(isGridFull(squares), checkWinConditions(squares), firstPlay, false, log)
+    results(isGridFull(squares), checkWinConditions(squares), firstPlay, false, log, record)
   ) {
     return squares;
   }
@@ -495,7 +499,7 @@ async function displaySim(list, setSquares) {
   return Promise.resolve(); // Resolve the promise after all moves are set
 }
 
-function sims() {
+function sims(setGameObject, gameObject) {
   let list = [];
   for (let j = 0; j < 9; ++j) {
     list.push(Array(9).fill(null));
@@ -511,7 +515,7 @@ function sims() {
     tb = !tb;
     turn = turn === "X" ? "O" : "X";
     const newBoard = list[i - 1].slice();
-    list[i] = makePlay(newBoard, tb, turn);
+    list[i] = makePlay(newBoard, tb, turn, setGameObject, gameObject);
   }
   print(list);
   return list;
@@ -526,7 +530,8 @@ export default function Board() {
   const [simulating, setSimulating] = useState(false);
   const isMobile = useMediaQuery("(max-width:592px)");
   const [popupOpen, setPopupOpen] = useState(true);
-  const [gameObject, setGameObject] = useState('')
+  const [gameObject, setGameObject] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
@@ -562,7 +567,9 @@ export default function Board() {
     resetBoard();
     if (event.target.checked && turn === "X") {
       //computer first
-      setSquares(makePlay(squares, event.target.checked, turn));
+      setLoading(true);
+      setSquares(makePlay(squares, event.target.checked, turn, setGameObject));
+      setLoading(false);
       if (
         results(
           isGridFull(squares),
@@ -578,7 +585,9 @@ export default function Board() {
     }
     if (!event.target.checked && turn === "O") {
       //computer second
-      setSquares(makePlay(squares, event.target.checked, turn));
+      setLoading(true);
+      setSquares(makePlay(squares, event.target.checked, turn, setGameObject));
+      setLoading(false);
       if (
         results(
           isGridFull(squares),
@@ -599,7 +608,9 @@ export default function Board() {
     resetBoard();
     if (!event.target.checked) {
       //computer controls 1 player
-      makePlay(squares, firstPlay, turn);
+      setLoading(true);
+      makePlay(squares, firstPlay, turn, setGameObject);
+      setLoading(false);
     }
     if (
       results(
@@ -627,7 +638,7 @@ export default function Board() {
   }
 
   async function simulateGame() {
-    let list = sims();
+    let list = sims(setGameObject, gameObject);
     await displaySim(list, setSquares);
     setSimulating(false);
     document.getElementById("simSwitch").checked = false;
@@ -635,26 +646,33 @@ export default function Board() {
   }
 
   function handleClick(i) {
-    const newSquares = squares.slice();
-    let newTurn;
-    if (newSquares[i] === null) {
-      log((prev) => prev + i);
-      newSquares[i] = turn;
-      newTurn = turn === "X" ? "O" : "X";
-      setSquares(newSquares);
-      setTurn(newTurn);
+    if (loading) {
+      return; //do nothign click not permitted
+    }
+    else {
+      const newSquares = squares.slice();
+      let newTurn;
+      if (newSquares[i] === null) {
+        setGameObject((prev) => prev + i);
+        newSquares[i] = turn;
+        newTurn = turn === "X" ? "O" : "X";
+        setSquares(newSquares);
+        setTurn(newTurn);
 
-      const winner = checkWinConditions(newSquares);
-      const full = isGridFull(newSquares);
-      if (results(full, winner, firstPlay, twoPersonMode)) {
-      }
-      if (!twoPersonMode) {
-        setSquares(makePlay(newSquares, firstPlay, newTurn));
-        if (results(full, winner, firstPlay, twoPersonMode)) {
+        const winner = checkWinConditions(newSquares);
+        const full = isGridFull(newSquares);
+        if (results(full, winner, firstPlay, twoPersonMode, setGameObject)) {
+        }
+        if (!twoPersonMode) {
+          setLoading(true);
+          setSquares(makePlay(newSquares, firstPlay, newTurn, setGameObject));
+          setLoading(false);
+          if (results(full, winner, firstPlay, twoPersonMode, setGameObject)) {
+            return;
+          }
+          setTurn(newTurn === "X" ? "O" : "X");
           return;
         }
-        setTurn(newTurn === "X" ? "O" : "X");
-        return;
       }
     }
   }
@@ -665,7 +683,8 @@ export default function Board() {
         isGridFull(squares),
         checkWinConditions(squares),
         firstPlay,
-        twoPersonMode
+        twoPersonMode,
+        setGameObject
       )
     ) {
       return false;
@@ -678,7 +697,9 @@ export default function Board() {
     let prefix = twoPersonMode ? ('2p') : (simulating ? ('sm') : (firstPlay ? ('cf') : ('pf')))
     setGameObject(`${prefix}:`);
     if (!twoPersonMode && firstPlay) {
-      setSquares(makePlay(Array(9).fill(null), firstPlay, "X"));
+      setLoading(true);
+      setSquares(makePlay(Array(9).fill(null), firstPlay, "X", setGameObject));
+      setLoading(false);
       const newTurn = "O";
       setTurn(newTurn);
     }
@@ -735,7 +756,8 @@ export default function Board() {
           isGridFull(squares),
           checkWinConditions(squares),
           firstPlay,
-          twoPersonMode
+          twoPersonMode,
+          setGameObject
         )}
         handleClose={resetBoard}
         gamelog={gameObject}
@@ -756,6 +778,7 @@ export default function Board() {
         {renderSquare(6)}
         {renderSquare(7)}
         {renderSquare(8)}
+        <p>{"<!-- what the fuck-->"}</p>
       </div>
       <div className="SwitchContainer">
         <TwoPersonMode
