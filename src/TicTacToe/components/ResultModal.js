@@ -24,9 +24,10 @@ function message(result) {
 }
 
 export default function ResultModal(props) {
-  const { gameOver, handleClose, results, gameLog } = props;
-
+  const { gameOver, handleClose, results } = props;
+  //trim gameLog
   //submit to DB here
+  
   const originalSrc =
     "https://github.com/daus-s/portfolio/blob/main/public/close-gray.png?raw=true";
   const hoverSrc =
