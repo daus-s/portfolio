@@ -76,8 +76,8 @@ function fillSchedule(arr, obj, strMode) {
     let endDate = new Date(end);
     //then get offset
     //consider going over months
-    let diff = ((startDate.getUTCMonth()-today.getUTCMonth()) ? length(startDate) : 0);
-    let d = startDate.getUTCDate() - today.getUTCDate() - diff;
+    let diff = ((startDate.getUTCMonth()-today.getUTCMonth()) ? length(today) : 0);
+    let d = startDate.getUTCDate() - today.getUTCDate() + (diff); //1 - 27 + 30 = 5
     //this is our first index [d][calculate]
     let [sh, sm] = [startDate.getUTCHours(), startDate.getUTCMinutes()]; //start hour, start minute
     let [eh, em] = [endDate.getUTCHours(), endDate.getUTCMinutes()];  //end hour, end minute
