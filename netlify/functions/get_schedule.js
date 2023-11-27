@@ -9,10 +9,8 @@ const client = new MongoClient(uri);
 const handler = async () => {
   console.log("get secure schedule handler:");
   console.log("got client");
-  console.log(uri);
 
   try {
-    console.log("hello try block")
     let today = new Date();
     today.setUTCMilliseconds(0);
     today.setUTCSeconds(0);
