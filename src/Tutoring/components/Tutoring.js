@@ -19,23 +19,20 @@ export default function Tutoring() {
   const [login, setLogin] = useState(false);
   const [cookies, setCookie] = useCookies([]);
   const [mode, setMode] = useState('schedule');
-
-
-  useEffect(() => {
-    const aboutElement = document.querySelector(".about");
-    if (aboutElement) {
-      const aboutRect = aboutElement.getBoundingClientRect();
-      setAboutHeight(aboutRect.height);
-    }
-  }, []);
+  const [gradientStyle, setGradientStyle] = useState({background: `linear-gradient(to bottom, #000000 ${126}px, #ffffff ${126}px)`});
 
   useEffect(() => {
-    const calendarElement = document.querySelector(".calendar");
-    if (calendarElement) {
-      const calRect = calendarElement.getBoundingClientRect();
-      setCalendarHeight(calRect.height);
-    }
-  }, []);
+      const aboutElement = document.querySelector(".about");
+      const calendarElement = document.querySelector(".calendar");
+
+      if (aboutElement && calendarElement) {
+        const aboutRect = aboutElement.getBoundingClientRect();
+        const calendarRect = calendarElement.getBoundingClientRect();
+
+        setGradientStyle({background: `linear-gradient(to bottom, #000000 ${aboutRect.height+126}px, #ffffff ${aboutRect.height+calendarRect.height-90}px)`});
+      }
+    }, []);
+
 
   useEffect(() => {
     if (cookies.jwt) {
@@ -43,19 +40,17 @@ export default function Tutoring() {
     }
   }, []);
 
-  const gradientStyle = {
-    background: `linear-gradient(to bottom, #000000 ${aboutHeight}px, #ffffff ${aboutHeight+calendarHeight}px)`
-  };
 
   return (
     <CookiesProvider>
       <GoogleOAuthProvider clientId="607389287302-svd75tj30maollaukr8chldblhr4uokn.apps.googleusercontent.com">
-        <div className="Tutoring" style={gradientStyle}>
-          <TutoringHeader />
-          <Login setLogin={setLogin}/>  
-          <ViewSelector setMode={setMode}/>
-
-          {mode==='schedule' ? <About /> : ''}
+        <div className="Tutoring">
+          <div className="wide">
+            <TutoringHeader />
+            <Login setLogin={setLogin}/>  
+            <ViewSelector setMode={setMode}/>
+          {mode==='schedule' ? <About setGradientStyle={setGradientStyle}/> : ''}
+          </div>
 
           {mode==='about' ? <Reviews /> : '' }
 
