@@ -1,0 +1,11 @@
+commit "mobile fix"
+explanantion: previously the code didnt render differnetly for mobile devices regardless of screen size. the meta tag had been removed from the index file.
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+changes:
+    "ok so the styling on the title cards on the homepage, the info modal on the start of tictactoe, the loading gif on the scheduler the titles on the sections on the a bunch of stuff hasn't been styled for mobile bc I thought it was just broken"
+	- title cards changed
+	- removed wtf/isMobile div
+	- open={popupOpen&&!isMobile} added isMobile condition to not death with for no
+	- **FIXED** div was too tall, rendering as desktop until using parent isMobile via props.mobile
+	- future developments you could make the mobile version cycle through tips like dota2 pause screen

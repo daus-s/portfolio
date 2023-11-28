@@ -1,0 +1,11 @@
+tictactoe_analytics
+explanation: created this branch for a feature that tracks the game and records the outcome of the game to the databse as well as having a stats dashboard (precursor ro betties/warheads stats vis. package )
+
+changes: 
+	quick mobile fix oops
+     ```  const styles = props.mobile ? {
+	    width: document.getElementById("tttBoard") ? document.getElementById("tttBoard").offsetWidth*.88 : ""
+	  }:{
+	    width: document.getElementById("tttBoard") ? document.getElementById("tttBoard").offsetWidth : ""
+	  };
+```
