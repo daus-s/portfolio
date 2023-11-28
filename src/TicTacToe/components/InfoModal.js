@@ -5,7 +5,6 @@ import React, { useEffect } from "react";
 import Popup from "reactjs-popup";
 
 export default function ResultModal(props) {
-  const isMobile = useMediaQuery("max-width: 678px");
   const originalSrc =
     "https://github.com/daus-s/portfolio/blob/main/public/close-gray.png?raw=true";
   const hoverSrc =
@@ -26,8 +25,8 @@ export default function ResultModal(props) {
 
   // include this in the new styles const
   // width: document.getElementById("tttBoard") ? document.getElementById("tttBoard").offsetWidth : ""
-  const styles = isMobile ? {
-    width: '50vh'
+  const styles = props.mobile ? {
+    width: document.getElementById("tttBoard") ? document.getElementById("tttBoard").offsetWidth*.88 : ""
   }:{
     width: document.getElementById("tttBoard") ? document.getElementById("tttBoard").offsetWidth : ""
   };
