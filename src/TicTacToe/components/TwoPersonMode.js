@@ -25,7 +25,7 @@ export default function TwoPersonMode(props) {
           className={props.mobile ? "mobileSlider round" : "slider round"}
         ></span>
       </label>
-      <p style={pstyle}>2-player Mode</p>
+      <p style={pstyle}>{!props.mobile?'2-player Mode':'2 Player'}</p>
     </div>
   );
 }

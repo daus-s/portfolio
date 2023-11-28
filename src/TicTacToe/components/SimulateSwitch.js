@@ -27,7 +27,7 @@ export default function SimulateSwitch(props) {
           style={sstyle}
         ></span>
       </label>
-      <p style={pstyle}>Simulate game</p>
+      <p style={pstyle}>{props.mobile?'Simulate':'Simulate game'}</p>
     </div>
   );
 }

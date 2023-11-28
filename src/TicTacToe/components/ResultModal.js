@@ -17,9 +17,7 @@ function message(result) {
   if (result === "computer") {
     return "The computer won!";
   }
-  if (result === "computer") {
-    return "The computer won!";
-  }
+
   if (result === "user") {
     return "YOU HAVE DONE THE IMPOSSIBLE, CLAIM YOUR PRIZE FOR BEATING THE COMPUTER!";
   }
@@ -27,7 +25,9 @@ function message(result) {
 
 export default function ResultModal(props) {
   const { gameOver, handleClose, results } = props;
-
+  //trim gameLog
+  //submit to DB here
+  
   const originalSrc =
     "https://github.com/daus-s/portfolio/blob/main/public/close-gray.png?raw=true";
   const hoverSrc =
@@ -55,7 +55,7 @@ export default function ResultModal(props) {
         <button className="close tttButton" id="rmcb" onClick={handleClose}>
           <img src={originalSrc} alt="Close." className="closeButton" />
         </button>
-        <div className="modalTitle" >{message(results)}</div>
+        <div className="modalTitle" style={props.mobile?{fontSize: '1.0em'}:{}}>{message(results)}</div>
       </div>
     </Popup>
   );

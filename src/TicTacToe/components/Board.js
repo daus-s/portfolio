@@ -679,11 +679,13 @@ export default function Board() {
           twoPersonMode
         )}
         handleClose={resetBoard}
+        mobile={isMobile}
       />
       <InfoModal
         open={popupOpen}
         onClose={handleClosePopup}
         onOpen={handleOpenPopup}
+        mobile={isMobile}
       />
 
       <div className="TTTBoard" id="tttBoard" style={boardStyle}>
@@ -697,7 +699,7 @@ export default function Board() {
         {renderSquare(7)}
         {renderSquare(8)}
       </div>
-      <div className="SwitchContainer">
+      <div className="SwitchContainer" style={isMobile?{bottom:'56px'}:{}}>
         <TwoPersonMode
           handleSwitchToggle={handleTPMToggle}
           disabled={tpmDis}
