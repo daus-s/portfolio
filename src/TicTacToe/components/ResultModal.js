@@ -17,7 +17,6 @@ function message(result) {
   if (result === "computer") {
     return "The computer won!";
   }
-
   if (result === "user") {
     return "YOU HAVE DONE THE IMPOSSIBLE, CLAIM YOUR PRIZE FOR BEATING THE COMPUTER!";
   }
