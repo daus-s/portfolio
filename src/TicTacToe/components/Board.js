@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import FirstPlayerSwitch from "./FirstPlayerSwitch";
 import TwoPersonMode from "./TwoPersonMode";
 import ResultModal from "./ResultModal";
-import { getTableRowUtilityClass, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import HomeButton from "./HomeButton";
 import ResetButton from "./ResetButton";
 import SimulateSwitch from "./SimulateSwitch";
@@ -564,7 +564,7 @@ export default function Board() {
   const [twoPersonMode, setTwoPersonMode] = useState(false);
   const [isWide, setIsWide] = useState(true);
   const [simulating, setSimulating] = useState(false);
-  const isMobile = useMediaQuery("(max-width:592px)");
+  const isMobile = useMediaQuery("(max-width:600px)");
   const [popupOpen, setPopupOpen] = useState(true);
   const [gameObject, setGameObject] = useState('');
   const [mode, setMode] = useState('pf');
@@ -826,11 +826,13 @@ export default function Board() {
           twoPersonMode
         )}
         handleClose={resetBoard}
+        mobile={isMobile}
       />
       <InfoModal
-        open={popupOpen}
+        open={popupOpen/*&&!isMobile*/}
         onClose={handleClosePopup}
         onOpen={handleOpenPopup}
+        mobile={isMobile}
       />
 
       <div className="TTTBoard" id="tttBoard" style={boardStyle}>
@@ -844,7 +846,7 @@ export default function Board() {
         {renderSquare(7)}
         {renderSquare(8)}
       </div>
-      <div className="SwitchContainer">
+      <div className="SwitchContainer" style={isMobile?{bottom:'56px'}:{}}>
         <TwoPersonMode
           handleSwitchToggle={handleTPMToggle}
           disabled={tpmDis}

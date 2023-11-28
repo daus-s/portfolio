@@ -27,7 +27,7 @@ export default function FirstPlayerSwitch(props) {
         ></span>
       </label>
       <p style={pstyle}>
-        {props.mobile ? "Computer 1st player" : "Computer first player"}
+        {props.mobile ? "CPU player 1" : "Computer first player"}
       </p>
     </div>
   );

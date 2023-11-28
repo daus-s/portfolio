@@ -55,7 +55,7 @@ export default function ResultModal(props) {
         <button className="close tttButton" id="rmcb" onClick={handleClose}>
           <img src={originalSrc} alt="Close." className="closeButton" />
         </button>
-        <div className="modalTitle" >{message(results)}</div>
+        <div className="modalTitle" style={props.mobile?{fontSize: '1.0em'}:{}}>{message(results)}</div>
       </div>
     </Popup>
   );
