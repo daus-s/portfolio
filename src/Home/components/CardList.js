@@ -20,6 +20,16 @@ export default function CardList() {
       />
       <Spacer height="20px" />
       <ProjectCard
+        title="betties.app - theGreenbook"
+        description=""
+        link="https://www.betties.app"
+        date="December 2023-present"
+        image="https://betties.app/greenbook.jpg"
+        altDescription=""
+        imgIsCircle={true}
+      />
+      <Spacer height="20px" />
+      <ProjectCard
         title="Tutoring Available Now"
         description="Tutoring sessions now available. Physics, Mathematics, Computer Science and more. Follow this link to schedule an appointment, read reviews, or find helpful resources"
         link="/tutoring"
