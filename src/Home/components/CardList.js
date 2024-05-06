@@ -30,6 +30,15 @@ export default function CardList() {
       />
       <Spacer height="20px" />
       <ProjectCard
+        title="betties.app"
+        description="betties.app is a social-betting site for you to place bets on random events: any time, any place. It was built with Next.JS on top of a supabase database with a fully implemented security suite. It has social features to find groups in addition to historical data, to track your bets over time. betties.app is an all-in-one website to place bets with friends."
+        link="https://www.betties.app"
+        date="OPEN NOW"
+        image="/greenbook.jpg"
+        altDescription="betties.app is a social-betting site for you to place bets on random events: any time, any place."
+      />
+      <Spacer height="20px" />
+      <ProjectCard
         title="Spelling Bee Helper"
         description="This is a Flask app used to play the NYT Games 'Spelling Bee'. IT is built using Flask, an Apple Automator app and basc HTML and CSS. Instructions for installations are provided in the README."
         link="https://github.com/daus-s/spelling-bee/blob/main/README.md"
