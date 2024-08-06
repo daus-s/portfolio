@@ -291,7 +291,6 @@ async function getScore(guess, remaining) {
         const lengthAf = calculateRemaining(guess, gyb, remaining).length;
         removed += lengthB4 - lengthAf;
     }
-    console.log({ word: guess, avgRemoved: removed / lengthB4 });
     return { word: guess, avgRemoved: removed / lengthB4 };
 }
 
