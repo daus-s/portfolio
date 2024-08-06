@@ -17,11 +17,13 @@ import {
     generateColors,
     winningWord
 } from "../lib/wordleutils";
+import { useMediaQuery } from "@mui/material";
 
 export default function Wordle({}) {
     const [checking, setChecking] = useState("");
     const [bigstr, setBigstr] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const isMobile = useMediaQuery("(max-width:600px)");
 
     const complexChangeHandler = (e) => {
         const w = e.target.value.toUpperCase();
@@ -55,7 +57,10 @@ export default function Wordle({}) {
 
     return (
         <SettingsProvider>
-            <div className="wordle-bot">
+            <div
+                className="wordle-bot"
+                style={isMobile ? { paddingBottom: "50vh" } : {}} //accomodate keyboard
+            >
                 <WordleHeader />
                 <Grid bigstr={bigstr} />
                 <StatefulTextBuffer
@@ -113,8 +118,13 @@ function Grid({ bigstr }) {
 }
 
 function Row({ letters, values }) {
+    const isMobile = useMediaQuery("(max-width:600px)");
+
     return (
-        <div className="wordle-row">
+        <div
+            className="wordle-row"
+            style={isMobile ? { maxWidth: "100vw" } : {}}
+        >
             <LetterSquare letter={letters.charAt(0)} value={values.charAt(0)} />
             <LetterSquare letter={letters.charAt(1)} value={values.charAt(1)} />
             <LetterSquare letter={letters.charAt(2)} value={values.charAt(2)} />
@@ -125,8 +135,15 @@ function Row({ letters, values }) {
 }
 
 function LetterSquare({ letter, value }) {
+    const isMobile = useMediaQuery("(max-width:600px)");
+
     return (
-        <div className={"l-square " + value.toLowerCase()}>
+        <div
+            className={"l-square " + value.toLowerCase()}
+            style={
+                isMobile ? { width: "56px", height: "56px", margin: "5px" } : {}
+            }
+        >
             {letter?.toUpperCase()}
         </div>
     );
@@ -209,7 +226,6 @@ function RemainingWords({ bigstr, setChecking }) {
 }
 
 function Word({ word, rank, color }) {
-    console.log(color);
     //import rank to color here somehow
     return (
         <div
@@ -234,7 +250,9 @@ function Word({ word, rank, color }) {
 }
 
 function WordleHeader() {
+    const isMobile = useMediaQuery("(max-width:600px)");
     const { openModal } = useSettings();
+
     return (
         <>
             <h1 className="wordle-header">
@@ -242,7 +260,10 @@ function WordleHeader() {
                 <span style={{ color: "#2f812f" }}>r</span>
                 <span style={{ color: "#444444" }}>d</span>leBot
             </h1>
-            <div className="icons">
+            <div
+                className="icons"
+                style={isMobile ? { maxWidth: "100vw" } : {}}
+            >
                 <a href="https://www.github.com/daus-s/wordle">
                     <img
                         src="/GithubLogo.png"
@@ -339,9 +360,7 @@ function EndGameModal({ isOpen, setMV, w, clear }) {
     if (!winningWord(w)) {
         return <></>;
     }
-    console.log("share", winningWord(w));
     const vals = generateColors("share", winningWord(w).toLowerCase());
-    console.log("vals", vals);
     const colors = {
         g: { color: "#b1a02f" },
         y: { color: "#2f812f" },
