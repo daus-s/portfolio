@@ -73,4 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1b79ca34-c471-4e60-90b2-0ef6cdac8dfc/deploy-status)](https://app.netlify.com/sites/daus-c/deploys)
 
+### Attributions
 
+- <a href="https://www.flaticon.com/free-icons/settings" title="settings icons">Settings icons created by Ilham Fitrotul Hayat - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/document" title="document icons">Document icons created by Freepik - Flaticon</a>

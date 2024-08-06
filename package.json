@@ -16,17 +16,17 @@
         "ejs": "^3.1.9",
         "express": "^4.18.2",
         "jwt-decode": "^3.1.2",
-        "mongodb": "5.7",
+        "mongodb": "^5.9.2",
         "mongoose": "^7.4.4",
+        "netlify-cli": "^17.33.5",
+        "rainbowvis.js": "^1.1.1",
         "react": "18.2.0",
         "react-cookie": "^4.1.1",
         "react-dom": "18.2.0",
-        "react-router-dom": "^6.8.1",
-        "react-scripts": "^5.0.1",
-        "reactjs-popup": "^2.0.5",
-        "tedious": "^16.4.0",
         "react-modal": "^3.16.1",
-        "netlify-cli": "^16.1.0"
+        "react-router-dom": "^6.8.1",
+        "reactjs-popup": "^2.0.5",
+        "tedious": "^18.3.0"
     },
     "devDependencies": {
         "@babel/runtime": "7.13.8",
@@ -36,9 +36,9 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
+        "fe": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject",
-        "tests": "jest"
+        "test": "jest"
     },
     "resolutions": {
         "nth-check": "2.0.1"
