@@ -150,6 +150,8 @@ function LetterSquare({ letter, value }) {
 }
 
 function RemainingWords({ bigstr, setChecking }) {
+    const isMobile = useMediaQuery("(max-width:600px)");
+
     const [candidates, setCandidates] = useState(undefined);
     const [guesses, setGuesses] = useState(undefined);
     const [scores, setScores] = useState(undefined);
@@ -209,7 +211,7 @@ function RemainingWords({ bigstr, setChecking }) {
 
     if (Array.isArray(scores)) {
         return (
-            <div className="word list">
+            <div className="word list" style={isMobile? { maxWidth: "100vw" }:{}}>
                 {scores
                     .sort((a, b) => b.avgRemoved - a.avgRemoved)
                     .map((word, i) => (
@@ -328,6 +330,8 @@ function Debug({ bigstr, checking }) {
 }
 
 function EndGameModal({ isOpen, setMV, w, clear }) {
+    const isMobile = useMediaQuery("(max-width:600px)");
+
     const closeWrapper = () => {
         clear("");
         setMV(false);
@@ -344,7 +348,7 @@ function EndGameModal({ isOpen, setMV, w, clear }) {
                         display: "flex",
                         flexDirection: "column",
                         backgroundColor: "black",
-                        width: "420px",
+                        width: isMobile?"95vw:"420px",
                         height: "fit-content",
                         margin: "auto"
                     },
@@ -362,8 +366,8 @@ function EndGameModal({ isOpen, setMV, w, clear }) {
     }
     const vals = generateColors("share", winningWord(w).toLowerCase());
     const colors = {
-        g: { color: "#b1a02f" },
-        y: { color: "#2f812f" },
+        g: { color: "#2f812f" },
+        y: { color: "#b1a02f" },
         b: { color: "#444444" }
     };
     return (
@@ -376,7 +380,7 @@ function EndGameModal({ isOpen, setMV, w, clear }) {
                     display: "flex",
                     flexDirection: "column",
                     backgroundColor: "black",
-                    width: "420px",
+                    width: isMobile?"95vw:"420px",
                     height: "fit-content",
                     margin: "auto"
                 },
