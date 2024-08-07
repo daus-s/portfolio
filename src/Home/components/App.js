@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Home.js";
 import TTT from "../../TicTacToe/components/TTT.js";
 import Tutoring from "../../Tutoring/components/Tutoring.js";
+import Wordle from "../../Wordle/components/Wordle.js";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/tictactoe" element={<TTT/>} />
         <Route path="/tutoring" element={<Tutoring/>}/>
+        <Route path="/wordle" element={<Wordle/>}/>
       </Routes>
     </Router>
   );
