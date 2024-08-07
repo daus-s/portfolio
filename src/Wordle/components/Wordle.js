@@ -348,7 +348,7 @@ function EndGameModal({ isOpen, setMV, w, clear }) {
                         display: "flex",
                         flexDirection: "column",
                         backgroundColor: "black",
-                        width: isMobile?"95vw:"420px",
+                        width: isMobile? "95vw" : "420px",
                         height: "fit-content",
                         margin: "auto"
                     },
@@ -380,7 +380,7 @@ function EndGameModal({ isOpen, setMV, w, clear }) {
                     display: "flex",
                     flexDirection: "column",
                     backgroundColor: "black",
-                    width: isMobile?"95vw:"420px",
+                    width: isMobile? "95vw" : "420px",
                     height: "fit-content",
                     margin: "auto"
                 },
