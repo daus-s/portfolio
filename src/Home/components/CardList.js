@@ -39,12 +39,12 @@ export default function CardList() {
       />
       <Spacer height="20px" />
       <ProjectCard
-        title="Spelling Bee Helper"
-        description="This is a Flask app used to play the NYT Games 'Spelling Bee'. IT is built using Flask, an Apple Automator app and basc HTML and CSS. Instructions for installations are provided in the README."
-        link="https://github.com/daus-s/spelling-bee/blob/main/README.md"
-        date="October 2023"
-        image="https://github.com/daus-s/portfolio/blob/main/SpellingBeeImg.PNG?raw=true"
-        altDescription="This is a Flask app used to play the NYT Games 'Spelling Bee'. "
+        title="Wordle"
+        description="The wordle app I created is a Command line-based app that takes uses User input to solve the wordle problem for the day. I have not yet lost with the code. The code uses a file of valid guesses as well as valid words to create the possible words that could be used in wordle. Then the user inputs into the command line interface the word chosen and the results (the black, yellow, green values). These correspond to where the letters in the guessed word go. If you are not familiar with the game, if the letter returns black then that letter does not exist in the word, if it is yellow it exists in that word but not in that index, if the letter is green that letter exists in that spot. "
+        link="/wordle"
+        date="January 2022"
+        image="https://raw.githubusercontent.com/daus-s/portfolio/main/WordleImage.png"
+        altDescription="I am incredibly competitive and hate losing. So I wrote code to solve wordle for me. I don't consider it cheating because I wrote the code."
       />
       <Spacer height="20px" />
       <ProjectCard
@@ -54,6 +54,15 @@ export default function CardList() {
         date="July 2023"
         image="https://github.com/daus-s/portfolio/blob/main/tictactoe.PNG?raw=true"
         altDescription="I built a tic-tac-toe game this blob serves as a link to the game. Enjoy!"
+      />
+      <Spacer height="20px" />
+      <ProjectCard
+        title="Spelling Bee Helper"
+        description="This is a Flask app used to play the NYT Games 'Spelling Bee'. IT is built using Flask, an Apple Automator app and basc HTML and CSS. Instructions for installations are provided in the README."
+        link="https://github.com/daus-s/spelling-bee/blob/main/README.md"
+        date="October 2023"
+        image="https://github.com/daus-s/portfolio/blob/main/SpellingBeeImg.PNG?raw=true"
+        altDescription="This is a Flask app used to play the NYT Games 'Spelling Bee'. "
       />
       <Spacer height="20px" />
       <ProjectCard
@@ -91,15 +100,6 @@ export default function CardList() {
         date="April 2022"
         image="https://raw.githubusercontent.com/daus-s/portfolio/main/TCMMidtermQR.PNG"
         altDescription="This is the technical communications midterm. It is a presentation on improving internet use. There is an anonymous self-reporting quiz to determine your level of internet addiction. This test is not necesarily indicative of your actual level of addiction but it does give a baseline. Team: Benjamin Kahn, Daus Carmichael, Keoni Lanoza, Moises Lopez."
-      />
-      <Spacer height="20px" />
-      <ProjectCard
-        title="Wordle"
-        description="The wordle app I created is a Command line based app that takes uses User input to solve the wordle problem for the day. I have not yet lost with the code. The code uses a file of valid guesses as well as valid words to create the possible words that could be used in wordle. Then the user inputs into the command line interface the word chosen and the results (the black, yellow, green values). These correspond to where the letters in the guessed word go. If you are not familiar with the game, if the letter returns black then that letter does not exist in the word, if it is yellow it exists in that word but not in that index, if the letter is green that letter exists in that spot. "
-        link="https://github.com/daus-s/wordle"
-        date="January 2022"
-        image="https://raw.githubusercontent.com/daus-s/portfolio/main/WordleImage.png"
-        altDescription="I am incredibly competitive and hate losing. So I wrote code to solve wordle for me. I don't consider it cheating because I wrote the code."
       />
       <Spacer height="20px" />
       <ProjectCard
