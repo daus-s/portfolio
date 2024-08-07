@@ -1,30 +1,31 @@
-import React, { useEffect, useRef } from 'react';
+import { useMediaQuery } from "@mui/material";
+import React, { useEffect, useRef } from "react";
 
-export default function StatefulTextBuffer({state, setState}) {
+export default function StatefulTextBuffer({ state, setState }) {
+    const isMobile = useMediaQuery("(max-width: 600px)");
     const inputRef = useRef(null);
-
 
     const changeWrapper = (e) => {
         if (typeof setState !== "function") {
-            console.log(e.target.value) 
+            console.log(e.target.value);
         } else {
             setState(e);
         }
     };
 
     useEffect(() => {
-    const input = inputRef.current;
-    input.focus();
+        const input = inputRef.current;
+        input.focus();
 
-    const handleBlur = () => {
-        setTimeout(() => input.focus(), 0);
-    };
+        const handleBlur = () => {
+            setTimeout(() => input.focus(), 0);
+        };
 
-    input.addEventListener('blur', handleBlur);
+        input.addEventListener("blur", handleBlur);
 
-    return () => {
-        input.removeEventListener('blur', handleBlur);
-    };
+        return () => {
+            input.removeEventListener("blur", handleBlur);
+        };
     }, []);
 
     return (
@@ -32,9 +33,13 @@ export default function StatefulTextBuffer({state, setState}) {
             type="text"
             className="hidden-input"
             ref={inputRef}
-            style={{ height: 0, width: 0, overflow: 'hidden', padding: 0 }}
+            style={
+                isMobile
+                    ? { height: "100vh", width: "100vw", position: "absolute", border: 0, backgroundColor: "transparent", color: "rgba(1,1,1,0)", top: 0, bottom: 0, left: 0, right: 0 }
+                    : { height: 0, width: 0, overflow: "hidden", padding: 0 }
+            }
             value={state}
             onChange={changeWrapper}
         />
     );
-};
+}
