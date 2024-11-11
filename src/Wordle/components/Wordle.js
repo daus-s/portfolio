@@ -56,27 +56,9 @@ export default function Wordle({}) {
     };
 
     return (
-        <SettingsProvider>
-            <div
-                className="wordle-bot"
-                style={isMobile ? { paddingBottom: "50vh" } : {}} //accomodate keyboard
-            >
-                <WordleHeader />
-                <Grid bigstr={bigstr} />
-                <StatefulTextBuffer
-                    state={bigstr}
-                    setState={complexChangeHandler}
-                />
-                <RemainingWords bigstr={bigstr} setChecking={setChecking} />
-                <Debug bigstr={bigstr} checking={checking} />
-                <EndGameModal
-                    isOpen={isModalOpen}
-                    setMV={setIsModalOpen}
-                    w={bigstr}
-                    clear={setBigstr}
-                />
-            </div>
-        </SettingsProvider>
+        <span style={{fontSize: 14}}>
+            wordlebot is currently down in solidarity with the NYT Tech Guild. Don't cross the picket line. 
+        </span>
     );
 }
 
