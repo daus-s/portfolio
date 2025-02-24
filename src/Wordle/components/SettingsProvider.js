@@ -12,20 +12,6 @@ export const SettingsProvider = ({ children }) => {
     });
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const togglePerformance = () => {
-        setSettings((prevSettings) => ({
-            ...prevSettings,
-            performance: !prevSettings.performance
-        }));
-    };
-
-    const toggleDiagnostics = () => {
-        setSettings((prevSettings) => ({
-            ...prevSettings,
-            debug: !prevSettings.debug
-        }));
-    };
-
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 

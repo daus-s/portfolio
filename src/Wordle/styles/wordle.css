@@ -14,12 +14,12 @@
 .wordle-row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    width: 420px
+    width: 420px;
+    padding: 0 0 0 2px;
 }
 
 .wordle-grid {
     width: fit-content;
-    margin: 0 auto;
 }
 
 
@@ -47,7 +47,7 @@ h1.wordle-header {
 .wordle-bot .icons {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 420px;
     margin: 0 auto;
 }

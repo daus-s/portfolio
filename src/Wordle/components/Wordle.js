@@ -18,11 +18,14 @@ import {
     winningWord
 } from "../lib/wordleutils";
 import { useMediaQuery } from "@mui/material";
+import WordleProvider from "./WordleProvider";
+import { InstructionProvider } from "./InstructionProvider";
 
 export default function Wordle({}) {
     const [checking, setChecking] = useState("");
     const [bigstr, setBigstr] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
+
     const isMobile = useMediaQuery("(max-width:600px)");
 
     const complexChangeHandler = (e) => {
@@ -56,10 +59,12 @@ export default function Wordle({}) {
     };
 
     return (
+        // <WordleProvider>
+        //     <InstructionProvider>
         <SettingsProvider>
             <div
                 className="wordle-bot"
-                style={isMobile ? { paddingBottom: "50vh" } : {}} //accomodate keyboard
+                style={isMobile ? { paddingBottom: "50vh" } : {}} //accommodate keyboard
             >
                 <WordleHeader />
                 <Grid bigstr={bigstr} />
@@ -77,6 +82,8 @@ export default function Wordle({}) {
                 />
             </div>
         </SettingsProvider>
+        //     </InstructionProvider>
+        // </WordleProvider>
     );
 }
 
@@ -123,7 +130,7 @@ function Row({ letters, values }) {
     return (
         <div
             className="wordle-row"
-            style={isMobile ? { maxWidth: "100vw" } : {}}
+            style={isMobile ? { maxWidth: "100vw", width: "100wv" } : {}}
         >
             <LetterSquare letter={letters.charAt(0)} value={values.charAt(0)} />
             <LetterSquare letter={letters.charAt(1)} value={values.charAt(1)} />
@@ -141,7 +148,9 @@ function LetterSquare({ letter, value }) {
         <div
             className={"l-square " + value.toLowerCase()}
             style={
-                isMobile ? { width: "56px", height: "56px", margin: "5px" } : {}
+                isMobile
+                    ? { width: "56px", height: "56px", margin: "5px auto" }
+                    : {}
             }
         >
             {letter?.toUpperCase()}
@@ -211,7 +220,10 @@ function RemainingWords({ bigstr, setChecking }) {
 
     if (Array.isArray(scores)) {
         return (
-            <div className="word list" style={isMobile? { maxWidth: "100vw" }:{}}>
+            <div
+                className="word list"
+                style={isMobile ? { maxWidth: "100vw" } : {}}
+            >
                 {scores
                     .sort((a, b) => b.avgRemoved - a.avgRemoved)
                     .map((word, i) => (
@@ -348,7 +360,7 @@ function EndGameModal({ isOpen, setMV, w, clear }) {
                         display: "flex",
                         flexDirection: "column",
                         backgroundColor: "black",
-                        width: isMobile? "95vw" : "420px",
+                        width: isMobile ? "auto" : "420px",
                         height: "fit-content",
                         margin: "auto"
                     },
@@ -380,7 +392,7 @@ function EndGameModal({ isOpen, setMV, w, clear }) {
                     display: "flex",
                     flexDirection: "column",
                     backgroundColor: "black",
-                    width: isMobile? "95vw" : "420px",
+                    width: isMobile ? "auto" : "420px",
                     height: "fit-content",
                     margin: "auto"
                 },
