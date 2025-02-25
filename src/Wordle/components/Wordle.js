@@ -59,31 +59,34 @@ export default function Wordle({}) {
     };
 
     return (
-        // <WordleProvider>
-        //     <InstructionProvider>
-        <SettingsProvider>
-            <div
-                className="wordle-bot"
-                style={isMobile ? { paddingBottom: "50vh" } : {}} //accommodate keyboard
-            >
-                <WordleHeader />
-                <Grid bigstr={bigstr} />
-                <StatefulTextBuffer
-                    state={bigstr}
-                    setState={complexChangeHandler}
-                />
-                <RemainingWords bigstr={bigstr} setChecking={setChecking} />
-                <Debug bigstr={bigstr} checking={checking} />
-                <EndGameModal
-                    isOpen={isModalOpen}
-                    setMV={setIsModalOpen}
-                    w={bigstr}
-                    clear={setBigstr}
-                />
-            </div>
-        </SettingsProvider>
-        //     </InstructionProvider>
-        // </WordleProvider>
+        <WordleProvider>
+            <InstructionProvider>
+                <SettingsProvider>
+                    <div
+                        className="wordle-bot"
+                        style={isMobile ? { paddingBottom: "50vh" } : {}} //accommodate keyboard
+                    >
+                        <WordleHeader />
+                        <Grid bigstr={bigstr} />
+                        <StatefulTextBuffer
+                            state={bigstr}
+                            setState={complexChangeHandler}
+                        />
+                        <RemainingWords
+                            bigstr={bigstr}
+                            setChecking={setChecking}
+                        />
+                        <Debug bigstr={bigstr} checking={checking} />
+                        <EndGameModal
+                            isOpen={isModalOpen}
+                            setMV={setIsModalOpen}
+                            w={bigstr}
+                            clear={setBigstr}
+                        />
+                    </div>
+                </SettingsProvider>
+            </InstructionProvider>
+        </WordleProvider>
     );
 }
 
