@@ -6,7 +6,7 @@ import { useMediaQuery } from "@mui/material";
 // Providers
 import { SettingsProvider, useSettings } from "./SettingsProvider";
 import WordleProvider from "./WordleProvider";
-import { InstructionProvider } from "./InstructionProvider";
+import { InstructionProvider, useTutorial } from "./InstructionProvider";
 
 // Components
 import StatefulTextBuffer from "./StatefulTextBuffer";
@@ -15,9 +15,23 @@ import StatefulTextBuffer from "./StatefulTextBuffer";
 import { words, accepted, filterWords, getScore, winCondition, turns, generateColors, winningWord, parseCombinedString } from "../lib/wordleutils";
 
 export default function GameManager() {
+    return (
+        <WordleProvider>
+            <InstructionProvider>
+                <SettingsProvider>
+                    <Game />
+                </SettingsProvider>
+            </InstructionProvider>
+        </WordleProvider>
+    );
+}
+
+function Game() {
     const [checking, setChecking] = useState("");
     const [bigstr, setBigstr] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const { show } = useTutorial();
 
     const complexChangeHandler = (e) => {
         const w = e.target.value.toUpperCase();
@@ -44,18 +58,14 @@ export default function GameManager() {
     };
 
     return (
-        <WordleProvider>
-            <InstructionProvider>
-                <SettingsProvider>
-                    <WordleHeader />
-                    <Grid bigstr={bigstr} />
-                    <StatefulTextBuffer state={bigstr} setState={complexChangeHandler} />
-                    <RemainingWords bigstr={bigstr} setChecking={setChecking} />
-                    <Debug bigstr={bigstr} checking={checking} />
-                    <EndGameModal isOpen={isModalOpen} setMV={setIsModalOpen} w={bigstr} clear={setBigstr} />
-                </SettingsProvider>
-            </InstructionProvider>
-        </WordleProvider>
+        <>
+            <WordleHeader />
+            <Grid bigstr={bigstr} />
+            <StatefulTextBuffer state={bigstr} setState={complexChangeHandler} disabled={show} />
+            <RemainingWords bigstr={bigstr} setChecking={setChecking} />
+            <Debug bigstr={bigstr} checking={checking} />
+            <EndGameModal isOpen={isModalOpen} setMV={setIsModalOpen} w={bigstr} clear={setBigstr} />
+        </>
     );
 }
 
@@ -76,7 +86,7 @@ function Row({ letters, values }) {
     const isMobile = useMediaQuery("(max-width:600px)");
 
     return (
-        <div className="wordle-row" style={isMobile ? { maxWidth: "100vw", width: "100wv" } : {}}>
+        <div className="wordle-row" style={isMobile ? { maxWidth: "100vw", width: "100vw" } : {}}>
             <LetterSquare letter={letters.charAt(0)} value={values.charAt(0)} />
             <LetterSquare letter={letters.charAt(1)} value={values.charAt(1)} />
             <LetterSquare letter={letters.charAt(2)} value={values.charAt(2)} />
@@ -86,11 +96,11 @@ function Row({ letters, values }) {
     );
 }
 
-function LetterSquare({ letter, value }) {
+export function LetterSquare({ letter, value, ghosty = false, plus = false }) {
     const isMobile = useMediaQuery("(max-width:600px)");
 
     return (
-        <div className={"l-square " + value.toLowerCase()} style={isMobile ? { width: "56px", height: "56px", margin: "5px auto" } : {}}>
+        <div className={"l-square " + value.toLowerCase() + (ghosty ? " ghosty" + (plus ? " plus" : "") : "")} style={isMobile ? { width: "56px", height: "56px", margin: "5px auto" } : {}}>
             {letter?.toUpperCase()}
         </div>
     );

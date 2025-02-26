@@ -1,6 +1,9 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import Cookies from "js-cookies";
 import Modal from "react-modal";
+import { LetterSquare } from "./GameManager";
+import StatefulTextBuffer from "./StatefulTextBuffer";
+import { useMediaQuery } from "@mui/material";
 
 function OLD() {
     return (
@@ -81,51 +84,130 @@ function OLD() {
 
 const Instructions = () => {
     return (
-        <div
-            style={{
-                fontFamily: "Arial",
-                color: "whitesmoke",
-            }}
-        >
-            <p>Enter your guess</p>
+        <div className="instructions" style={{ fontSize: 24 }}>
+            <h1 style={{ margin: "0", textDecoration: "underline", fontSize: 36 }}>Instructions</h1>
+            <p style={{ margin: "0" }}>Enter the word you guessed.</p>
             <p className="instruction">
-                Followed by your output as <code style={{ color: "#2f812f", fontSize: 18 }}>g</code> <code style={{ color: "#ddd", fontSize: 18 }}>b</code> or{" "}
-                <code style={{ color: "#b1a02f", fontSize: 18 }}>y</code> for each color:
+                Followed with the colors as:
+                <br />
+                <div style={{ display: "flex" }}>
+                    <LetterSquare letter={"g"} value={"g"} />
+                    <LetterSquare letter={"y"} value={"y"} />
+                    <LetterSquare letter={"b"} value={"b"} />
+                </div>
             </p>
-            <div>{/* <InstructionSquare /> */}</div>
         </div>
     );
 };
 
-function InstructionModal({ show, setShow, handleAcknowledge }) {
-    if (show) {
-        return (
-            <Modal
-                isOpen={show}
-                onRequestClose={() => setShow(false)}
-                contentLabel="Settings Modal"
-                style={{
-                    content: {
-                        display: "flex",
-                        flexDirection: "column",
-                        backgroundColor: "black",
-                        width: "420px",
-                        height: "80vh",
-                        margin: "0 auto",
-                        overflow: "hidden auto",
-                    },
-                    overlay: {
-                        backgroundColor: "rgba(0,0,0,.5)",
-                    },
-                }}
-            >
-                <Instructions />
-                <button onClick={() => setShow(false)}>OK</button>
-                <button onClick={handleAcknowledge}>OK, I get it (don't show again)</button>
-            </Modal>
-        );
-    } else {
+function Tutorial({ setPage, handleAcknowledge }) {
+    const [stb, setSTB] = useState("");
+
+    const isMobile = useMediaQuery("(max-width:600px)");
+
+    const trainingWheels = (e) => {
+        const val = e.target.value;
+        console.log(val);
+
+        const TERM = "gybgyb";
+
+        if (TERM.startsWith(val)) {
+            setSTB(val);
+        }
+        if (val === TERM) {
+            handleAcknowledge();
+        }
+    };
+
+    return (
+        <div style={{ height: "100%", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+            <StatefulTextBuffer state={stb} setState={(e) => trainingWheels(e)} />
+            <BackButton cb={() => setPage("")} />
+            <div style={{ display: "flex", margin: "auto" }}>
+                <LetterSquare letter={"g"} value={"g"} ghosty={stb.charAt(3) !== "g"} plus={stb.charAt(0) === "g"} />
+                <LetterSquare letter={"y"} value={"y"} ghosty={stb.charAt(4) !== "y"} plus={stb.charAt(1) === "y"} />
+                <LetterSquare letter={"b"} value={"b"} ghosty={stb.charAt(5) !== "b"} plus={stb.charAt(2) === "b"} />
+            </div>
+            <div style={{ fontSize: 24, fontWeight: 400 }}>
+                {isMobile ? (
+                    <>Complete to unlock</>
+                ) : (
+                    <>
+                        Color the letters correctly to unlock WordleBot{" "}
+                        <span className="info" title="(Hint: enter gybgyb)">
+                            &#9432;
+                        </span>
+                    </>
+                )}
+            </div>
+        </div>
+    );
+}
+
+function BackButton({ cb }) {
+    return (
+        <button onClick={cb} className="back-button">
+            <span>&#x2190;</span> back
+        </button>
+    );
+}
+
+function InstructionModal({ show, handleAcknowledge }) {
+    const [page, setPage] = useState("");
+
+    const isMobile = useMediaQuery("(max-width:600px)");
+
+    const startTutorial = () => {
+        setPage("tutorial");
+    };
+
+    if (!show) {
+        return;
     }
+
+    let elem;
+
+    switch (page) {
+        case "":
+            elem = (
+                <>
+                    <Instructions />
+                    <div className="button-box">
+                        <button onClick={startTutorial}>Tutorial</button>
+                        <button onClick={handleAcknowledge}>{isMobile ? "Got it. " : "OK, I get it"}</button>
+                    </div>
+                </>
+            );
+
+            //<span style={{ fontSize: "smaller" }}>(don't show again)</span>
+            break;
+        case "tutorial":
+            elem = <Tutorial setPage={setPage} handleAcknowledge={handleAcknowledge} />;
+            break;
+    }
+
+    return (
+        <Modal
+            isOpen={show}
+            contentLabel="Settings Modal"
+            style={{
+                content: {
+                    display: "flex",
+                    flexDirection: "column",
+                    backgroundColor: "black",
+                    height: isMobile ? "fit-content" : "283px",
+                    width: isMobile ? "auto" : "420px",
+                    margin: "auto",
+                    overflow: "hidden",
+                },
+                overlay: {
+                    backgroundColor: "rgba(0,0,0,.5)",
+                },
+            }}
+        >
+            {elem}
+        </Modal>
+    );
 }
 
 const InstructionContext = createContext();
@@ -134,7 +216,6 @@ export const useTutorial = () => useContext(InstructionContext);
 
 export const InstructionProvider = ({ children }) => {
     const [show, setShow] = useState(true);
-    // const [slide, setSlide] = useState();
 
     useEffect(() => {
         // Check if the cookie exists
@@ -157,9 +238,9 @@ export const InstructionProvider = ({ children }) => {
     };
 
     return (
-        <>
+        <InstructionContext.Provider value={{ show }}>
             {children}
             <InstructionModal show={show} setShow={setShow} handleAcknowledge={handleAcknowledge} />
-        </>
+        </InstructionContext.Provider>
     );
 };
