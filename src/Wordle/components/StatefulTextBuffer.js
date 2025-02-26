@@ -1,7 +1,10 @@
 import { useMediaQuery } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 
-export default function StatefulTextBuffer({ state, setState }) {
+export default function StatefulTextBuffer({ state, setState, disabled = false }) {
+    if (disabled) {
+        return;
+    }
     const isMobile = useMediaQuery("(max-width: 600px)");
     const inputRef = useRef(null);
 
@@ -35,7 +38,7 @@ export default function StatefulTextBuffer({ state, setState }) {
             ref={inputRef}
             style={
                 isMobile
-                    ? { height: "100vh", width: "100vw", position: "absolute", border: 0, backgroundColor: "transparent", color: "rgba(1,1,1,0)", top: 0, bottom: 0, left: 0, right: 0 }
+                    ? { height: "100%", width: "100%", position: "absolute", border: 0, backgroundColor: "transparent", color: "rgba(1,1,1,0)", top: 0, bottom: 0, left: 0, right: 0 }
                     : { height: 0, width: 0, overflow: "hidden", padding: 0 }
             }
             value={state}
