@@ -218,10 +218,7 @@ export const InstructionProvider = ({ children }) => {
     const [show, setShow] = useState(true);
 
     useEffect(() => {
-        // Check if the cookie exists
         const hasAcknowledged = Cookies.getItem("instructionsAcknowledged");
-
-        console.log(hasAcknowledged);
 
         if (!hasAcknowledged) {
             setShow(true);
@@ -232,7 +229,6 @@ export const InstructionProvider = ({ children }) => {
     }, []);
 
     const handleAcknowledge = () => {
-        // Set a cookie that expires in 2 weeks
         Cookies.setItem("instructionsAcknowledged", "true", { expires: 14 });
         setShow(false);
     };

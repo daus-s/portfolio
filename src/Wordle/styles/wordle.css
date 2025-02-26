@@ -25,7 +25,9 @@
     margin: 0 auto;
 }
 
-
+.word {
+    z-index: 1;
+}
 
 .l-square.y {
     background-color: #b1a02f;

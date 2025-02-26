@@ -57,12 +57,20 @@ function Game() {
         }
     };
 
+    const setLastWord = (word) => {
+        if (typeof bigstr !== "string") {
+            return;
+        }
+
+        setBigstr(bigstr.substring(0, bigstr.length - (bigstr.length % 10)) + word);
+    };
+
     return (
         <>
             <WordleHeader />
             <Grid bigstr={bigstr} />
             <StatefulTextBuffer state={bigstr} setState={complexChangeHandler} disabled={show} />
-            <RemainingWords bigstr={bigstr} setChecking={setChecking} />
+            <RemainingWords bigstr={bigstr} setChecking={setChecking} setLastWord={setLastWord} />
             <Debug bigstr={bigstr} checking={checking} />
             <EndGameModal isOpen={isModalOpen} setMV={setIsModalOpen} w={bigstr} clear={setBigstr} />
         </>
@@ -106,7 +114,7 @@ export function LetterSquare({ letter, value, ghosty = false, plus = false }) {
     );
 }
 
-function RemainingWords({ bigstr, setChecking }) {
+function RemainingWords({ bigstr, setChecking, setLastWord }) {
     const isMobile = useMediaQuery("(max-width:600px)");
 
     const [candidates, setCandidates] = useState(undefined);
@@ -172,14 +180,14 @@ function RemainingWords({ bigstr, setChecking }) {
                 {scores
                     .sort((a, b) => b.avgRemoved - a.avgRemoved)
                     .map((word, i) => (
-                        <Word word={word.word} key={i} rank={i} color={spectrum.colorAt(i)} />
+                        <Word word={word.word} key={i} rank={i} color={spectrum.colorAt(i)} setLastWord={setLastWord} />
                     ))}
             </div>
         );
     }
 }
 
-function Word({ word, rank, color }) {
+function Word({ word, rank, color, setLastWord }) {
     //import rank to color here somehow
     return (
         <div
@@ -196,7 +204,9 @@ function Word({ word, rank, color }) {
                 borderRadius: "16px",
                 margin: "4px",
                 textAlign: "center",
+                cursor: "pointer",
             }}
+            onClick={() => setLastWord(word)}
         >
             {word}
         </div>
