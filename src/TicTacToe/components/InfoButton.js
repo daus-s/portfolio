@@ -1,33 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/tttstyles.css";
 
 export default function InfoButton(props) {
-  const originalSrc =
-    "https://github.com/daus-s/portfolio/blob/main/public/info-gray.png?raw=true";
-  const hoverSrc =
-    "https://github.com/daus-s/portfolio/blob/main/public/info-green.png?raw=true";
+    const originalSrc = "/info-gray.png";
+    const hoverSrc = "/info-green.png";
 
-  useEffect(() => {
-    const imageElement = document.getElementById("infobutton");
-    if (imageElement) {
-      imageElement.addEventListener("mouseover", () => {
-        imageElement.src = hoverSrc;
-      });
+    const [src, setSrc] = useState(originalSrc);
 
-      imageElement.addEventListener("mouseout", () => {
-        imageElement.src = originalSrc;
-      });
-    }
-  }, [originalSrc, hoverSrc]);
-
-  return (
-    <button className="infobutton tttButton" onClick={props.handle}>
-      <img
-        src={originalSrc}
-        id="infobutton"
-        alt="Icon to reset the board"
-        className="icon"
-      />
-    </button>
-  );
+    return (
+        <button className="infobutton tttButton" onClick={props.handle}>
+            <img
+                src={src}
+                id="infobutton"
+                alt="Icon to reset the board"
+                className="icon"
+                onMouseEnter={() => setSrc(hoverSrc)}
+                onMouseLeave={() => setSrc(originalSrc)}
+            />
+        </button>
+    );
 }

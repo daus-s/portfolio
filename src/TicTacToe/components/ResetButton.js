@@ -1,33 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/tttstyles.css";
 
 export default function HomeButton(props) {
-  const originalSrc =
-    "https://github.com/daus-s/portfolio/blob/main/public/refresh-arrow-gray.png?raw=true";
-  const hoverSrc =
-    "https://github.com/daus-s/portfolio/blob/main/public/refresh-arrow-green.png?raw=true";
+    const originalSrc = "/refresh-arrow-gray.png";
+    const hoverSrc = "/refresh-arrow-green.png";
 
-  useEffect(() => {
-    const imageElement = document.getElementById("resetbutton");
-    if (imageElement) {
-      imageElement.addEventListener("mouseover", () => {
-        imageElement.src = hoverSrc;
-      });
+    const [src, setSrc] = useState(originalSrc);
 
-      imageElement.addEventListener("mouseout", () => {
-        imageElement.src = originalSrc;
-      });
-    }
-  }, [originalSrc, hoverSrc]);
-
-  return (
-    <button className="resetbutton tttButton" onClick={props.handle}>
-      <img
-        src={originalSrc}
-        id="resetbutton"
-        alt="Icon to reset the board"
-        className="icon"
-      />
-    </button>
-  );
+    return (
+        <button className="resetbutton tttButton" onClick={props.handle}>
+            <img
+                src={src}
+                id="resetbutton"
+                alt="Icon to reset the board"
+                className="icon"
+                onMouseEnter={() => setSrc(hoverSrc)}
+                onMouseLeave={() => setSrc(originalSrc)}
+            />
+        </button>
+    );
 }
