@@ -9,6 +9,8 @@
     align-items: center;
     justify-content: center;
     color: white;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter";
+
 }
 
 .wordle-row {
@@ -23,7 +25,9 @@
     margin: 0 auto;
 }
 
-
+.word {
+    z-index: 1;
+}
 
 .l-square.y {
     background-color: #b1a02f;
@@ -37,6 +41,28 @@
 .l-square.b {
     background-color: #222222;
 }
+
+.l-square.y.ghosty {
+    background-color: #b1a02f88;
+
+}
+
+.l-square.g.ghosty {
+    background-color: #2f812f88;
+}
+
+.l-square.b.ghosty {
+    background-color: #22222288;
+}
+
+.l-square.ghosty {
+    color: #ffffff88;
+}
+
+.l-square.ghosty.plus {
+    color: white;
+}
+
 
 h1.wordle-header {
     color: white;
@@ -59,4 +85,85 @@ h1.wordle-header {
     width: 565px;
     flex-wrap: wrap;
     margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.instruction code {
+    background-color: #363636;
+    padding: 2px 3px 1px 2px;
+}
+
+.instructions p {
+    font-weight: 700
+}
+
+.button-box {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.button-box button {
+    outline: none;
+    border: none;
+    color: lime;
+    font-weight: 400;
+    text-decoration: underline;
+    background-color: transparent;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter";
+    font-size: 24px;
+}
+
+.button-box button:hover {
+    font-weight: 600;
+}
+
+.hint {
+    font-style: italic;
+    font-size: smaller;
+    font-weight: 100;
+}
+
+.back-button {
+    outline: none;
+    border: none;
+    color: lime;
+    font-size: 24px;
+    font-weight: 400;
+    text-decoration: underline;
+    background-color: transparent;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter";
+    z-index: 1;
+}
+
+.back-button:hover {
+    font-weight: 600;
+}
+
+
+/*
+
+
+IM GOATED see below
+
+
+
+ */
+.back-button span {
+    font-weight: 600;
+
+}
+
+.back-button:hover span {
+    font-weight: 400;
+}
+
+span.info {
+    font-size: 24px;
+}
+
+span.info:hover {
+    font-weight: 700;
 }
