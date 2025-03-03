@@ -189,7 +189,7 @@ function TutorReqForm(props) {
         >
             <Modal isOpen={submissionModalStatus} style={modalStyles}>
                 <button className="modalClose" onClick={closeSubmissionModal}>
-                    <img src="/public/close.png?raw=true" alt="close button" />
+                    <img src="/close.png" alt="close button" />
                 </button>
                 <h3>Your submission was received!</h3>
                 <ul>
@@ -208,7 +208,7 @@ function TutorReqForm(props) {
             </Modal>
             <Modal isOpen={loginModalStatus} style={modalStyles}>
                 <button className="modalClose" onClick={closeLoginModal}>
-                    <img src="/public/close.png?raw=true" alt="close button" />
+                    <img src="/close.png" alt="close button" />
                 </button>
                 <GoogleLogin
                     onSuccess={(credentialResponse) => {
