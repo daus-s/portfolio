@@ -7,13 +7,30 @@ import "../styles/spacer.css";
 
 import ProjectCard from "./ProjectCard";
 import Spacer from "./Spacer";
+import { useEffect, useState } from "react";
 
 export default function CardList() {
+    const [bio, setBio] = useState("");
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch("/bio");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const text = await response.text();
+                setBio(transform(text));
+            } catch (_) {}
+        };
+        fetchData();
+    }, []);
+
     return (
         <div className="CardList">
             <ProjectCard
                 title="Biography"
-                description="My name is Davis Carmichael, although I go by Daus. (exclusively). I graduated from Chapman University in December 2022 with 2 degrees; one a Bachelor's of Science Degree in Physics, and the other a Bachelor's of Science in Computer Science. I competed in track and field and cross country in college. I am from Issaquah in Washington State. This meant the outdoors became a very important part of my life. I loved running on the trails in the hills as well as snowboarding in the mountains 45 minutes from home. I grew up very interested in science and my curiosity has yet to leave me. I am always looking to learn and figure out more and more. As I explained, with more and more problems, I will continue to add projects I complete here."
+                description={bio}
                 date="February 2000"
                 image="/graduation.jpg"
                 altDescription="Hey, I'm Daus, welcome to my website! I will continue to add new projects as I work on them!"
