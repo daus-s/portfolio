@@ -8,6 +8,7 @@ import "../styles/spacer.css";
 import ProjectCard from "./ProjectCard";
 import Spacer from "./Spacer";
 import { useEffect, useState } from "react";
+import { ttHtml } from "../../utils/html/transform";
 
 export default function CardList() {
     const [bio, setBio] = useState("");
@@ -15,12 +16,14 @@ export default function CardList() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("/bio");
+                const response = await fetch("bio");
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const text = await response.text();
-                setBio(transform(text));
+
+                console.log(typeof text);
+                setBio(ttHtml(text));
             } catch (_) {}
         };
         fetchData();
