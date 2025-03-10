@@ -35,7 +35,7 @@ export default function CardList() {
             <ProjectCard
                 title="Biography"
                 description={bio}
-                date="February 2000"
+                date=""
                 image="/graduation.jpg"
                 altDescription="Hey, I'm Daus, welcome to my website! I will continue to add new projects as I work on them!"
             />
