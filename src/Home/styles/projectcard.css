@@ -99,3 +99,16 @@
 .bot {
   display: flex;
 }
+
+p.tt-html a {
+  text-decoration: underline;
+}
+
+p.tt-html a:visited {
+  text-decoration: underline;
+}
+
+
+p.tt-html a:hover {
+  color: #aaffaa !important; 
+}
