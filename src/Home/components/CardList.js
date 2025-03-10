@@ -22,11 +22,7 @@ export default function CardList() {
                 }
                 const text = await response.text();
 
-                console.log(<TTHtml text={text} />);
-
                 const bioContent = <TTHtml text={text} />;
-
-                console.log("TTHtml output:", bioContent);
 
                 setBio(bioContent);
             } catch (_) {}
