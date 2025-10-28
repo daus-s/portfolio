@@ -1,7 +1,6 @@
-.hover-title {
+.textbox-title {
     font-size: 30px;
     font-weight: 500;
-    
 }
 
 .AL {
@@ -11,7 +10,11 @@
     text-align: right;
 }
 
-.hover-text {
+.text-box {
     padding: 15px;
     margin: 25px;
+}
+
+.textbox-wrapper {
+    margin: 6px 0px 12px 0px;
 }
