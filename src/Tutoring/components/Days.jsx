@@ -1,4 +1,4 @@
-import Day from "./Day.js";
+import Day from "./Day";
 import { useMediaQuery } from "@mui/material";
 import "../styles/calendar.css";
 

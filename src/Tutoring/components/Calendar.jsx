@@ -1,7 +1,7 @@
 import "../styles/tutoringstyles.css";
-import Days from "./Days.js";
-import LeftButton from "./LeftButton.js";
-import RightButton from "./RightButton.js";
+import Days from "./Days";
+import LeftButton from "./LeftButton";
+import RightButton from "./RightButton";
 import { useMediaQuery } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
