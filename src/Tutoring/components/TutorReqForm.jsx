@@ -23,7 +23,6 @@ const modalStyles = {
   content: {
     fontFamily: "Arial, sans-serif",
     lineHeight: "1.6",
-    padding: "20px",
     position: "absolute",
     top: "50%",
     left: "50%",
