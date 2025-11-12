@@ -1,6 +1,6 @@
 import "../styles/tttstyles.css";
 import { useMediaQuery } from "@mui/material";
-import InfoButton from "./InfoButton.js";
+import InfoButton from "./InfoButton";
 
 export default function TTTHeader(props) {
   const mobileStyle = props.isMobile

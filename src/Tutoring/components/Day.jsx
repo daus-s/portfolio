@@ -1,5 +1,5 @@
 import "../styles/calendar.css";
-import HourBlock from "./HourBlock.js";
+import HourBlock from "./HourBlock";
 import { useState, useEffect } from "react";
 
 
