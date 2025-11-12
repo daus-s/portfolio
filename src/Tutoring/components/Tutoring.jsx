@@ -5,6 +5,7 @@ import About from "./About";
 import Reviews from "./Reviews";
 import ResourceList from "./ResourceList";
 import TutorReqForm from "./TutorReqForm";
+import TutoringProvider from "./TutoringProvider";
 import Calendar from "./Calendar";
 import ViewSelector from "./ViewSelector";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -45,38 +46,40 @@ export default function Tutoring() {
 
   return (
     <GoogleOAuthProvider clientId="607389287302-svd75tj30maollaukr8chldblhr4uokn.apps.googleusercontent.com">
-      <div className="Tutoring">
-        <div className="wide">
-          <TutoringHeader />
-          <Login setLogin={setLogin} />
-          <ViewSelector setMode={setMode} />
+      <TutoringProvider>
+        <div className="Tutoring">
+          <div className="wide">
+            <TutoringHeader />
+            <Login setLogin={setLogin} />
+            <ViewSelector setMode={setMode} />
+            {mode === "schedule" ? (
+              <About setGradientStyle={setGradientStyle} />
+            ) : (
+              ""
+            )}
+          </div>
+
+          {mode === "about" ? <Reviews /> : ""}
+
           {mode === "schedule" ? (
-            <About setGradientStyle={setGradientStyle} />
+            <Calendar
+              changeDuration={setDuration}
+              setTime={setTime}
+              time={time}
+              login={login}
+            />
           ) : (
             ""
           )}
+          {mode === "schedule" ? (
+            <TutorReqForm duration={duration} time={time} />
+          ) : (
+            ""
+          )}
+
+          {mode === "resources" ? <ResourceList /> : ""}
         </div>
-
-        {mode === "about" ? <Reviews /> : ""}
-
-        {mode === "schedule" ? (
-          <Calendar
-            changeDuration={setDuration}
-            setTime={setTime}
-            time={time}
-            login={login}
-          />
-        ) : (
-          ""
-        )}
-        {mode === "schedule" ? (
-          <TutorReqForm duration={duration} time={time} />
-        ) : (
-          ""
-        )}
-
-        {mode === "resources" ? <ResourceList /> : ""}
-      </div>
+      </TutoringProvider>
     </GoogleOAuthProvider>
   );
 }

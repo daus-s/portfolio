@@ -78,7 +78,7 @@ export default function CardList() {
         description="This is a book containing 6 topics in optics. It describes the fundamental math of each topic as well as the lab practice we used. The book includes diagrams, mathematics, pictures, and written descriptions. The 6 topics are reflection and refraction, telescopes, microscopes, power and polarization of light, lasers, and diffraction. "
         link="/OpticsBook.pdf"
         date="May 2022"
-        image="/optics.PNG"
+        image="/optics.png"
         altDescription="In Optics Lab we had an assignment in which we were to create chapters throughout the semester. We would then compile them together to create our books. Each chapter covers a physical phenomenon and a laboratory experiment to test it."
       />
       <Spacer height="20px" />

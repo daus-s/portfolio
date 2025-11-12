@@ -8,34 +8,62 @@ import "../styles/spacer.css";
 import React from "react";
 import { useMediaQuery } from "@mui/material";
 import MobileProjectCard from "./MobileProjectCard";
+
 export default function ProjectCard(props) {
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      window.location.href = props.link;
+    const {
+        link,
+        title,
+        date,
+        image,
+        alt,
+        height,
+        description,
+        altDescription
+    } = props;
+
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            window.location.href = link;
+        }
+    };
+
+    const isMobile = useMediaQuery("(max-width:600px)");
+
+    if (isMobile) {
+        <MobileProjectCard
+            link={link}
+            title={title}
+            altDescription={altDescription}
+        />;
     }
-  };
-  
-  const isMobile = useMediaQuery("(max-width:600px)");
-  return isMobile ? (
-    <MobileProjectCard
-      link={props.link}
-      title={props.title}
-      altDescription={props.altDescription}
-    />
-  ) : (
-    <div className="Container">
-      <div tabIndex="0" className="ProjectCard" onKeyDown={handleKeyPress}>
-        <a href={props.link}>
-          <div className="top">
-            <div className="title">{props.title}</div>
-            <div className="date">{props.date}</div>
-          </div>
-          <div>
-            <img className="img" src={props.image} alt={props.alt} style={props.height?{height: props.height}:{width:'20%'}}/>
-            <div className="description">{props.description}</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  );
+
+    return (
+        <div className="Container">
+            <div
+                tabIndex="0"
+                className="ProjectCard"
+                onKeyDown={handleKeyPress}
+                role="button" // Improves accessibility
+                aria-label={`Open ${title}`} // Improves accessibility
+            >
+                <a href={link} className="card-link">
+                    <div className="top">
+                        <div className="title">{title}</div>
+                        <div className="date">{date}</div>
+                    </div>
+                    <div className="content">
+                        <img
+                            className="img"
+                            src={image}
+                            alt={alt}
+                            style={
+                                height ? { height: height } : { width: "20%" }
+                            }
+                        />
+                        <div className="description">{description}</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    );
 }
